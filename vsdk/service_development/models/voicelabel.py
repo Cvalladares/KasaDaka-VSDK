@@ -213,6 +213,8 @@ class VoiceFragment(models.Model):
 
     def validator(self):
         errors = []
+        #Temporary for ICT4D 2018, Heroku performance optimalization
+        return errors
         try:
             accessible = self.audio.storage.exists(self.audio.name)
         except NotImplementedError:
