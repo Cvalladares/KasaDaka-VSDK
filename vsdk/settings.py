@@ -42,6 +42,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'webauction.apps.WebauctionConfig',
     'vsdk.service_development.apps.ServiceDevelopmentConfig',
     'storages',
     'django.contrib.admin',
