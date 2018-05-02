@@ -1,0 +1,13 @@
+<h1>Web auction</h1>
+
+
+At the moment, available products in the auction are:
+{% if item_list %}
+<ul>
+    {% for item in item_list %}
+    <li>{{ item.name }}</li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No items are available.</p>
+{% endif %}
