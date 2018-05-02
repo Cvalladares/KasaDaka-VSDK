@@ -17,33 +17,9 @@
 },
 {
   "model": "service_development.voicelabel",
-  "pk": 3,
-  "fields": {
-    "name": "This is the truth",
-    "description": ""
-  }
-},
-{
-  "model": "service_development.voicelabel",
   "pk": 4,
   "fields": {
     "name": "English language",
-    "description": ""
-  }
-},
-{
-  "model": "service_development.voicelabel",
-  "pk": 5,
-  "fields": {
-    "name": "Thank you for using this service",
-    "description": ""
-  }
-},
-{
-  "model": "service_development.voicelabel",
-  "pk": 6,
-  "fields": {
-    "name": "Wow, it must be a really boring guy!",
     "description": ""
   }
 },
@@ -108,7 +84,7 @@
   "pk": 14,
   "fields": {
     "name": "Four",
-    "description": ""
+    "description": null
   }
 },
 {
@@ -148,7 +124,7 @@
   "pk": 19,
   "fields": {
     "name": "Nine",
-    "description": ""
+    "description": null
   }
 },
 {
@@ -156,7 +132,7 @@
   "pk": 20,
   "fields": {
     "name": "Zero",
-    "description": ""
+    "description": null
   }
 },
 {
@@ -177,41 +153,242 @@
 },
 {
   "model": "service_development.voicelabel",
-  "pk": 23,
+  "pk": 27,
   "fields": {
-    "name": "Does the king like to drink beer?",
-    "description": ""
+    "name": "Greeting - Buy or Sell",
+    "description": "Will greet Vendu users and as for them to choose to either buy or sell"
   }
 },
 {
   "model": "service_development.voicelabel",
-  "pk": 25,
+  "pk": 29,
   "fields": {
-    "name": "Please speak your message",
-    "description": ""
+    "name": "How Many Jars do you want to buy",
+    "description": "Will ask the user how many jars he want s to buy"
   }
 },
 {
-  "model": "service_development.language",
-  "pk": 1,
+  "model": "service_development.voicelabel",
+  "pk": 30,
   "fields": {
-    "name": "Nederlands",
-    "code": "nl",
-    "voice_label": 1,
-    "error_message": 2,
-    "select_language": 8,
-    "pre_choice_option": 9,
-    "post_choice_option": 10,
-    "one": 11,
-    "two": 12,
-    "three": 13,
-    "four": 14,
-    "five": 15,
-    "six": 16,
-    "seven": 17,
-    "eight": 18,
-    "nine": 19,
-    "zero": 20
+    "name": "You chose to buy. At the moment we have a total of",
+    "description": "Will let the user know that you have chosen to buy instead of sell"
+  }
+},
+{
+  "model": "service_development.voicelabel",
+  "pk": 31,
+  "fields": {
+    "name": "How Many Jars do you want to buy",
+    "description": "Prompt the user to input the number of jars to sell"
+  }
+},
+{
+  "model": "service_development.voicelabel",
+  "pk": 32,
+  "fields": {
+    "name": "Shea Butter",
+    "description": "Voice fragment representing shea butter"
+  }
+},
+{
+  "model": "service_development.voicelabel",
+  "pk": 33,
+  "fields": {
+    "name": "Jars of Honey",
+    "description": "Jars of honey as an item"
+  }
+},
+{
+  "model": "service_development.voicelabel",
+  "pk": 34,
+  "fields": {
+    "name": "Jars of Shea Nuts",
+    "description": "Jars of Shea Nuts as an item"
+  }
+},
+{
+  "model": "service_development.voicelabel",
+  "pk": 35,
+  "fields": {
+    "name": "You have chosen to Buy",
+    "description": "Prompts the user that they have chosen to buy a particular item, to be used before a number"
+  }
+},
+{
+  "model": "service_development.voicelabel",
+  "pk": 36,
+  "fields": {
+    "name": "Ten",
+    "description": "Number 10"
+  }
+},
+{
+  "model": "service_development.voicelabel",
+  "pk": 37,
+  "fields": {
+    "name": "Eleven",
+    "description": "Number Eleven"
+  }
+},
+{
+  "model": "service_development.voicelabel",
+  "pk": 38,
+  "fields": {
+    "name": "Twelve",
+    "description": "Number 12"
+  }
+},
+{
+  "model": "service_development.voicelabel",
+  "pk": 39,
+  "fields": {
+    "name": "Thirteen",
+    "description": "Number 13"
+  }
+},
+{
+  "model": "service_development.voicelabel",
+  "pk": 40,
+  "fields": {
+    "name": "Fourteen",
+    "description": "Number 14"
+  }
+},
+{
+  "model": "service_development.voicelabel",
+  "pk": 41,
+  "fields": {
+    "name": "Fifteen",
+    "description": "Number 15"
+  }
+},
+{
+  "model": "service_development.voicelabel",
+  "pk": 42,
+  "fields": {
+    "name": "Sixteen",
+    "description": "Number 16"
+  }
+},
+{
+  "model": "service_development.voicelabel",
+  "pk": 43,
+  "fields": {
+    "name": "Seventeen",
+    "description": "Number 17"
+  }
+},
+{
+  "model": "service_development.voicelabel",
+  "pk": 44,
+  "fields": {
+    "name": "Eighteen",
+    "description": "Number 18"
+  }
+},
+{
+  "model": "service_development.voicelabel",
+  "pk": 45,
+  "fields": {
+    "name": "Nineteen",
+    "description": "Number 19"
+  }
+},
+{
+  "model": "service_development.voicelabel",
+  "pk": 46,
+  "fields": {
+    "name": "Twenty",
+    "description": "number 20"
+  }
+},
+{
+  "model": "service_development.voicelabel",
+  "pk": 47,
+  "fields": {
+    "name": "Please enter your number again",
+    "description": "Prompts user to re-enter the value"
+  }
+},
+{
+  "model": "service_development.voicelabel",
+  "pk": 48,
+  "fields": {
+    "name": "How much would you like to pay for these items?",
+    "description": "Prompt user to input the amount of cedi to be paid for their items"
+  }
+},
+{
+  "model": "service_development.voicelabel",
+  "pk": 49,
+  "fields": {
+    "name": "You have chosen to Pay",
+    "description": "Notify the user of the value they are going to pay"
+  }
+},
+{
+  "model": "service_development.voicelabel",
+  "pk": 50,
+  "fields": {
+    "name": "Zedi",
+    "description": "Say the Zedi, the currency from ghana"
+  }
+},
+{
+  "model": "service_development.voicelabel",
+  "pk": 51,
+  "fields": {
+    "name": "We will call you back",
+    "description": "Instruct the user of the following steps after this bid"
+  }
+},
+{
+  "model": "service_development.voicelabel",
+  "pk": 52,
+  "fields": {
+    "name": "What are you trying to sell?",
+    "description": "Prompt the user to input what they are trying to sell"
+  }
+},
+{
+  "model": "service_development.voicelabel",
+  "pk": 53,
+  "fields": {
+    "name": "You have chosen to sell",
+    "description": "Notify the user they are trying to sell an item.  To be followed by the item itself and a prompt of how much is expected"
+  }
+},
+{
+  "model": "service_development.voicelabel",
+  "pk": 54,
+  "fields": {
+    "name": "How Many",
+    "description": "Request the user to input how many items must be sold.  To be followed by the items"
+  }
+},
+{
+  "model": "service_development.voicelabel",
+  "pk": 55,
+  "fields": {
+    "name": "Would you like to sell",
+    "description": "Continuation of how many would you like to sell"
+  }
+},
+{
+  "model": "service_development.voicelabel",
+  "pk": 56,
+  "fields": {
+    "name": "We will call you back sell",
+    "description": "Closing sentence on sell"
+  }
+},
+{
+  "model": "service_development.voicelabel",
+  "pk": 57,
+  "fields": {
+    "name": "At the moment we have",
+    "description": "Prompts the user what items are for sale, to be followed by a number, by the item, and by a prompt to request what to sell"
   }
 },
 {
@@ -262,33 +439,6 @@
 },
 {
   "model": "service_development.voicefragment",
-  "pk": 1,
-  "fields": {
-    "parent": 6,
-    "language": 2,
-    "audio": "boring_guy_en.wav"
-  }
-},
-{
-  "model": "service_development.voicefragment",
-  "pk": 2,
-  "fields": {
-    "parent": 6,
-    "language": 1,
-    "audio": "boring_guy_nl.wav"
-  }
-},
-{
-  "model": "service_development.voicefragment",
-  "pk": 6,
-  "fields": {
-    "parent": 22,
-    "language": 1,
-    "audio": "no_nl.wav"
-  }
-},
-{
-  "model": "service_development.voicefragment",
   "pk": 7,
   "fields": {
     "parent": 22,
@@ -303,15 +453,6 @@
     "parent": 22,
     "language": 3,
     "audio": "no_fr.wav"
-  }
-},
-{
-  "model": "service_development.voicefragment",
-  "pk": 9,
-  "fields": {
-    "parent": 21,
-    "language": 1,
-    "audio": "yes_nl.wav"
   }
 },
 {
@@ -334,15 +475,6 @@
 },
 {
   "model": "service_development.voicefragment",
-  "pk": 12,
-  "fields": {
-    "parent": 20,
-    "language": 1,
-    "audio": "0_nl.wav"
-  }
-},
-{
-  "model": "service_development.voicefragment",
   "pk": 13,
   "fields": {
     "parent": 20,
@@ -361,19 +493,10 @@
 },
 {
   "model": "service_development.voicefragment",
-  "pk": 15,
-  "fields": {
-    "parent": 19,
-    "language": 1,
-    "audio": "9_nl.wav"
-  }
-},
-{
-  "model": "service_development.voicefragment",
   "pk": 16,
   "fields": {
     "parent": 19,
-    "language": 2,
+    "language": 3,
     "audio": "9_fr.wav"
   }
 },
@@ -382,17 +505,8 @@
   "pk": 17,
   "fields": {
     "parent": 19,
-    "language": 3,
+    "language": 2,
     "audio": "9_en.wav"
-  }
-},
-{
-  "model": "service_development.voicefragment",
-  "pk": 18,
-  "fields": {
-    "parent": 18,
-    "language": 1,
-    "audio": "8_nl.wav"
   }
 },
 {
@@ -415,15 +529,6 @@
 },
 {
   "model": "service_development.voicefragment",
-  "pk": 21,
-  "fields": {
-    "parent": 17,
-    "language": 1,
-    "audio": "7_nl.wav"
-  }
-},
-{
-  "model": "service_development.voicefragment",
   "pk": 22,
   "fields": {
     "parent": 17,
@@ -438,15 +543,6 @@
     "parent": 17,
     "language": 3,
     "audio": "7_fr.wav"
-  }
-},
-{
-  "model": "service_development.voicefragment",
-  "pk": 24,
-  "fields": {
-    "parent": 16,
-    "language": 1,
-    "audio": "6_nl.wav"
   }
 },
 {
@@ -469,15 +565,6 @@
 },
 {
   "model": "service_development.voicefragment",
-  "pk": 27,
-  "fields": {
-    "parent": 15,
-    "language": 1,
-    "audio": "5_nl.wav"
-  }
-},
-{
-  "model": "service_development.voicefragment",
   "pk": 28,
   "fields": {
     "parent": 15,
@@ -496,19 +583,10 @@
 },
 {
   "model": "service_development.voicefragment",
-  "pk": 30,
-  "fields": {
-    "parent": 14,
-    "language": 1,
-    "audio": "4_nl.wav"
-  }
-},
-{
-  "model": "service_development.voicefragment",
   "pk": 31,
   "fields": {
     "parent": 14,
-    "language": 2,
+    "language": 3,
     "audio": "4_fr.wav"
   }
 },
@@ -517,17 +595,8 @@
   "pk": 32,
   "fields": {
     "parent": 14,
-    "language": 3,
+    "language": 2,
     "audio": "4_en.wav"
-  }
-},
-{
-  "model": "service_development.voicefragment",
-  "pk": 33,
-  "fields": {
-    "parent": 13,
-    "language": 1,
-    "audio": "3_nl.wav"
   }
 },
 {
@@ -550,15 +619,6 @@
 },
 {
   "model": "service_development.voicefragment",
-  "pk": 36,
-  "fields": {
-    "parent": 12,
-    "language": 1,
-    "audio": "2_nl.wav"
-  }
-},
-{
-  "model": "service_development.voicefragment",
   "pk": 37,
   "fields": {
     "parent": 12,
@@ -573,15 +633,6 @@
     "parent": 12,
     "language": 3,
     "audio": "2_fr.wav"
-  }
-},
-{
-  "model": "service_development.voicefragment",
-  "pk": 39,
-  "fields": {
-    "parent": 11,
-    "language": 1,
-    "audio": "1_nl.wav"
   }
 },
 {
@@ -604,15 +655,6 @@
 },
 {
   "model": "service_development.voicefragment",
-  "pk": 42,
-  "fields": {
-    "parent": 10,
-    "language": 1,
-    "audio": "post_choice_option_nl.wav"
-  }
-},
-{
-  "model": "service_development.voicefragment",
   "pk": 43,
   "fields": {
     "parent": 10,
@@ -627,15 +669,6 @@
     "parent": 10,
     "language": 3,
     "audio": "post_choice_option_fr.wav"
-  }
-},
-{
-  "model": "service_development.voicefragment",
-  "pk": 45,
-  "fields": {
-    "parent": 9,
-    "language": 1,
-    "audio": "pre_choice_option_nl.wav"
   }
 },
 {
@@ -658,15 +691,6 @@
 },
 {
   "model": "service_development.voicefragment",
-  "pk": 48,
-  "fields": {
-    "parent": 8,
-    "language": 1,
-    "audio": "select_language_nl.wav"
-  }
-},
-{
-  "model": "service_development.voicefragment",
   "pk": 49,
   "fields": {
     "parent": 8,
@@ -681,15 +705,6 @@
     "parent": 8,
     "language": 3,
     "audio": "select_language_fr.wav"
-  }
-},
-{
-  "model": "service_development.voicefragment",
-  "pk": 51,
-  "fields": {
-    "parent": 7,
-    "language": 1,
-    "audio": "french_nl.wav"
   }
 },
 {
@@ -712,51 +727,6 @@
 },
 {
   "model": "service_development.voicefragment",
-  "pk": 54,
-  "fields": {
-    "parent": 6,
-    "language": 3,
-    "audio": "boring_guy_fr.wav"
-  }
-},
-{
-  "model": "service_development.voicefragment",
-  "pk": 55,
-  "fields": {
-    "parent": 5,
-    "language": 1,
-    "audio": "thank_you_for_using_nl.wav"
-  }
-},
-{
-  "model": "service_development.voicefragment",
-  "pk": 56,
-  "fields": {
-    "parent": 5,
-    "language": 2,
-    "audio": "thank_you_for_using_en.wav"
-  }
-},
-{
-  "model": "service_development.voicefragment",
-  "pk": 57,
-  "fields": {
-    "parent": 5,
-    "language": 3,
-    "audio": "thank_you_for_using_fr.wav"
-  }
-},
-{
-  "model": "service_development.voicefragment",
-  "pk": 58,
-  "fields": {
-    "parent": 4,
-    "language": 1,
-    "audio": "english_nl.wav"
-  }
-},
-{
-  "model": "service_development.voicefragment",
   "pk": 59,
   "fields": {
     "parent": 4,
@@ -771,42 +741,6 @@
     "parent": 4,
     "language": 3,
     "audio": "english_fr.wav"
-  }
-},
-{
-  "model": "service_development.voicefragment",
-  "pk": 61,
-  "fields": {
-    "parent": 3,
-    "language": 1,
-    "audio": "truth_nl.wav"
-  }
-},
-{
-  "model": "service_development.voicefragment",
-  "pk": 62,
-  "fields": {
-    "parent": 3,
-    "language": 2,
-    "audio": "truth_en.wav"
-  }
-},
-{
-  "model": "service_development.voicefragment",
-  "pk": 63,
-  "fields": {
-    "parent": 3,
-    "language": 3,
-    "audio": "truth_fr.wav"
-  }
-},
-{
-  "model": "service_development.voicefragment",
-  "pk": 64,
-  "fields": {
-    "parent": 2,
-    "language": 1,
-    "audio": "error_nl.wav"
   }
 },
 {
@@ -829,15 +763,6 @@
 },
 {
   "model": "service_development.voicefragment",
-  "pk": 67,
-  "fields": {
-    "parent": 1,
-    "language": 1,
-    "audio": "dutch_nl.wav"
-  }
-},
-{
-  "model": "service_development.voicefragment",
   "pk": 68,
   "fields": {
     "parent": 1,
@@ -856,38 +781,542 @@
 },
 {
   "model": "service_development.voicefragment",
-  "pk": 70,
+  "pk": 76,
   "fields": {
-    "parent": 23,
-    "language": 1,
-    "audio": "king_question_nl.wav"
-  }
-},
-{
-  "model": "service_development.voicefragment",
-  "pk": 71,
-  "fields": {
-    "parent": 23,
+    "parent": 27,
     "language": 2,
-    "audio": "king_question_en.wav"
+    "audio": "Greeting_Nk6fUO5.wav"
   }
 },
 {
   "model": "service_development.voicefragment",
-  "pk": 72,
+  "pk": 78,
   "fields": {
-    "parent": 23,
-    "language": 3,
-    "audio": "king_question_fr.wav"
+    "parent": 29,
+    "language": 2,
+    "audio": "HowManyJars_XQBB7bZ.wav"
   }
 },
 {
   "model": "service_development.voicefragment",
-  "pk": 74,
+  "pk": 79,
   "fields": {
-    "parent": 25,
+    "parent": 30,
+    "language": 2,
+    "audio": "YouChoseToBuy_RqBNe46.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 80,
+  "fields": {
+    "parent": 30,
     "language": 3,
-    "audio": "speakYourMessage.wav"
+    "audio": "Fr-youChooseToBuy.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 81,
+  "fields": {
+    "parent": 29,
+    "language": 3,
+    "audio": "Fr-howMany.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 83,
+  "fields": {
+    "parent": 27,
+    "language": 3,
+    "audio": "Fr-greeting.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 84,
+  "fields": {
+    "parent": 31,
+    "language": 2,
+    "audio": "HowManyJars_syMl1il.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 85,
+  "fields": {
+    "parent": 31,
+    "language": 3,
+    "audio": "Fr-howMany_CMpjdgg.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 86,
+  "fields": {
+    "parent": 32,
+    "language": 2,
+    "audio": "JarsOfSheaButter_5AltqVs.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 87,
+  "fields": {
+    "parent": 32,
+    "language": 3,
+    "audio": "Fr-potsOfSheaButter.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 88,
+  "fields": {
+    "parent": 33,
+    "language": 2,
+    "audio": "JarsOfHoney_GZsmkFg.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 89,
+  "fields": {
+    "parent": 33,
+    "language": 3,
+    "audio": "Fr-potsOfHoney.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 90,
+  "fields": {
+    "parent": 34,
+    "language": 2,
+    "audio": "SheaNuts_PZl2MsK.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 91,
+  "fields": {
+    "parent": 34,
+    "language": 3,
+    "audio": "Fr-potsOfSheaNuts.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 92,
+  "fields": {
+    "parent": 35,
+    "language": 2,
+    "audio": "YouHaveChosenToBuy_k4l5H9G.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 93,
+  "fields": {
+    "parent": 35,
+    "language": 3,
+    "audio": "Fr-youChooseToBuySingle.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 94,
+  "fields": {
+    "parent": 36,
+    "language": 3,
+    "audio": "Fr-10.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 95,
+  "fields": {
+    "parent": 36,
+    "language": 2,
+    "audio": "10_en_JIVjbPA.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 96,
+  "fields": {
+    "parent": 37,
+    "language": 2,
+    "audio": "11_en_mQqugcJ.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 97,
+  "fields": {
+    "parent": 37,
+    "language": 3,
+    "audio": "Fr-11.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 98,
+  "fields": {
+    "parent": 38,
+    "language": 3,
+    "audio": "Fr-12.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 99,
+  "fields": {
+    "parent": 38,
+    "language": 2,
+    "audio": "12_en_dUAA7Iu.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 100,
+  "fields": {
+    "parent": 39,
+    "language": 2,
+    "audio": "13_en_l4wHvi5.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 101,
+  "fields": {
+    "parent": 39,
+    "language": 3,
+    "audio": "Fr-13.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 102,
+  "fields": {
+    "parent": 40,
+    "language": 3,
+    "audio": "Fr-14.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 103,
+  "fields": {
+    "parent": 40,
+    "language": 2,
+    "audio": "14_en_iwwlbJ4.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 104,
+  "fields": {
+    "parent": 41,
+    "language": 2,
+    "audio": "15_en_slY21oK.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 105,
+  "fields": {
+    "parent": 41,
+    "language": 3,
+    "audio": "Fr-15.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 106,
+  "fields": {
+    "parent": 42,
+    "language": 2,
+    "audio": "16_en_ZaWEmDA.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 107,
+  "fields": {
+    "parent": 42,
+    "language": 3,
+    "audio": "Fr-16.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 108,
+  "fields": {
+    "parent": 43,
+    "language": 3,
+    "audio": "Fr-17.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 109,
+  "fields": {
+    "parent": 43,
+    "language": 2,
+    "audio": "17_en_m0YhQKs.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 110,
+  "fields": {
+    "parent": 44,
+    "language": 2,
+    "audio": "18_en_7d5RUM3.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 111,
+  "fields": {
+    "parent": 44,
+    "language": 3,
+    "audio": "Fr-18.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 112,
+  "fields": {
+    "parent": 45,
+    "language": 2,
+    "audio": "19_en_MDfsUff.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 113,
+  "fields": {
+    "parent": 45,
+    "language": 3,
+    "audio": "Fr-19.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 114,
+  "fields": {
+    "parent": 46,
+    "language": 2,
+    "audio": "20_en_IaG6HVN.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 115,
+  "fields": {
+    "parent": 46,
+    "language": 3,
+    "audio": "Fr-20.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 116,
+  "fields": {
+    "parent": 47,
+    "language": 2,
+    "audio": "PleaseEnterYourNumberAgain_9pe3YNj.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 117,
+  "fields": {
+    "parent": 47,
+    "language": 3,
+    "audio": "Fr-EnterNumberAgain.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 118,
+  "fields": {
+    "parent": 48,
+    "language": 3,
+    "audio": "Fr-HowMuchToPayForItems2.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 119,
+  "fields": {
+    "parent": 48,
+    "language": 2,
+    "audio": "HowMuchWouldYouLikeToPay_VDzt1Gw.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 120,
+  "fields": {
+    "parent": 49,
+    "language": 2,
+    "audio": "YouHaveChosenToPay_kG3ygXy.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 121,
+  "fields": {
+    "parent": 49,
+    "language": 3,
+    "audio": "Fr-youChooseToPay.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 122,
+  "fields": {
+    "parent": 50,
+    "language": 2,
+    "audio": "Zedi_UssjaOS.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 123,
+  "fields": {
+    "parent": 50,
+    "language": 3,
+    "audio": "Zedi_HT42XJK.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 124,
+  "fields": {
+    "parent": 51,
+    "language": 2,
+    "audio": "WeWillCallYouBID_Zr3wKZA.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 125,
+  "fields": {
+    "parent": 51,
+    "language": 3,
+    "audio": "Fr-WeWillCallYouBID.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 126,
+  "fields": {
+    "parent": 52,
+    "language": 3,
+    "audio": "Fr-wharAreYouSelling.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 127,
+  "fields": {
+    "parent": 52,
+    "language": 2,
+    "audio": "WhatAreYouTryingToSell_hRgihrk.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 128,
+  "fields": {
+    "parent": 53,
+    "language": 2,
+    "audio": "YouHaveChosenToSell_mwLLS28.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 129,
+  "fields": {
+    "parent": 53,
+    "language": 3,
+    "audio": "Fr-youXhooseToSell.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 130,
+  "fields": {
+    "parent": 54,
+    "language": 2,
+    "audio": "HowMany_7TToLxX.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 131,
+  "fields": {
+    "parent": 54,
+    "language": 3,
+    "audio": "Fr-howMany_gk24wfM.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 132,
+  "fields": {
+    "parent": 55,
+    "language": 2,
+    "audio": "ctd-would-you-like-to-sell.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 133,
+  "fields": {
+    "parent": 55,
+    "language": 3,
+    "audio": "Fr-ctd-would-you-like-to-sell.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 134,
+  "fields": {
+    "parent": 56,
+    "language": 3,
+    "audio": "Fr-WeWillCallSELL.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 135,
+  "fields": {
+    "parent": 56,
+    "language": 2,
+    "audio": "WeWillCallYouSELL_iPxdqul.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 136,
+  "fields": {
+    "parent": 57,
+    "language": 2,
+    "audio": "AtTheMomentWeHave.wav"
+  }
+},
+{
+  "model": "service_development.voicefragment",
+  "pk": 137,
+  "fields": {
+    "parent": 57,
+    "language": 3,
+    "audio": "Fr-AtTheMomentWeHave.wav"
   }
 },
 {
@@ -899,7 +1328,7 @@
     "modification_date": "2018-02-16T16:42:26.402Z",
     "name": "Does the king like to drink beer?",
     "description": "",
-    "voice_label": 23
+    "voice_label": null
   }
 },
 {
@@ -935,7 +1364,7 @@
     "modification_date": "2018-02-16T16:42:51.484Z",
     "name": "This is the truth",
     "description": "",
-    "voice_label": 3
+    "voice_label": null
   }
 },
 {
@@ -947,7 +1376,7 @@
     "modification_date": "2017-04-23T21:33:29.853Z",
     "name": "Thank you for using this service",
     "description": "",
-    "voice_label": 5
+    "voice_label": null
   }
 },
 {
@@ -959,7 +1388,391 @@
     "modification_date": "2017-04-23T21:36:55.756Z",
     "name": "King is boring",
     "description": "",
-    "voice_label": 6
+    "voice_label": null
+  }
+},
+{
+  "model": "service_development.voiceservicesubelement",
+  "pk": 9,
+  "fields": {
+    "service": 2,
+    "creation_date": "2018-05-01T17:36:12.826Z",
+    "modification_date": "2018-05-01T18:56:12.779Z",
+    "name": "Welcome and Choice to buy or Sell",
+    "description": "Choose to either buy or sell",
+    "voice_label": 27
+  }
+},
+{
+  "model": "service_development.voiceservicesubelement",
+  "pk": 10,
+  "fields": {
+    "service": 2,
+    "creation_date": "2018-05-01T17:36:12.842Z",
+    "modification_date": "2018-05-01T18:44:17.342Z",
+    "name": "Buy",
+    "description": "User Chooses to buy instead of sell",
+    "voice_label": 35
+  }
+},
+{
+  "model": "service_development.voiceservicesubelement",
+  "pk": 11,
+  "fields": {
+    "service": 2,
+    "creation_date": "2018-05-01T17:37:40.873Z",
+    "modification_date": "2018-05-01T17:37:40.873Z",
+    "name": "Sell",
+    "description": "User Chooses to Sell instead of buy",
+    "voice_label": 53
+  }
+},
+{
+  "model": "service_development.voiceservicesubelement",
+  "pk": 12,
+  "fields": {
+    "service": 2,
+    "creation_date": "2018-05-01T17:48:22.406Z",
+    "modification_date": "2018-05-01T18:03:53.240Z",
+    "name": "At the moment we have",
+    "description": "Let the user know what items are currently in stock",
+    "voice_label": 57
+  }
+},
+{
+  "model": "service_development.voiceservicesubelement",
+  "pk": 13,
+  "fields": {
+    "service": 2,
+    "creation_date": "2018-05-01T18:02:30.343Z",
+    "modification_date": "2018-05-01T18:04:23.091Z",
+    "name": "Number of items available for sale",
+    "description": "Lets the user know of the number of items available for sale",
+    "voice_label": 43
+  }
+},
+{
+  "model": "service_development.voiceservicesubelement",
+  "pk": 14,
+  "fields": {
+    "service": 2,
+    "creation_date": "2018-05-01T18:03:31.828Z",
+    "modification_date": "2018-05-01T18:05:16.083Z",
+    "name": "current item on schedule",
+    "description": "States the current item that is on schedule for sale",
+    "voice_label": 33
+  }
+},
+{
+  "model": "service_development.voiceservicesubelement",
+  "pk": 15,
+  "fields": {
+    "service": 2,
+    "creation_date": "2018-05-01T18:05:10.582Z",
+    "modification_date": "2018-05-01T18:05:10.582Z",
+    "name": "How many to buy",
+    "description": "Prompts the user how many of the current scheduled items he or she wants to buy",
+    "voice_label": 31
+  }
+},
+{
+  "model": "service_development.voiceservicesubelement",
+  "pk": 16,
+  "fields": {
+    "service": 2,
+    "creation_date": "2018-05-01T18:24:00.620Z",
+    "modification_date": "2018-05-01T18:27:59.745Z",
+    "name": "You have chosen to buy",
+    "description": "Start the prompt to notify the user of its choice and request the payment ammount",
+    "voice_label": 35
+  }
+},
+{
+  "model": "service_development.voiceservicesubelement",
+  "pk": 17,
+  "fields": {
+    "service": 2,
+    "creation_date": "2018-05-01T18:26:23.304Z",
+    "modification_date": "2018-05-01T18:29:26.311Z",
+    "name": "item to buy",
+    "description": "the item that the user chose to buy.  This item will be followed by the quantity the user selected",
+    "voice_label": 33
+  }
+},
+{
+  "model": "service_development.voiceservicesubelement",
+  "pk": 18,
+  "fields": {
+    "service": 2,
+    "creation_date": "2018-05-01T18:27:24.579Z",
+    "modification_date": "2018-05-01T18:29:18.072Z",
+    "name": "number of items chosen",
+    "description": "This represent the number of items the user is trying to buy",
+    "voice_label": 15
+  }
+},
+{
+  "model": "service_development.voiceservicesubelement",
+  "pk": 19,
+  "fields": {
+    "service": 2,
+    "creation_date": "2018-05-01T18:29:10.016Z",
+    "modification_date": "2018-05-01T18:29:10.016Z",
+    "name": "How much to pay",
+    "description": "Ask the user how much he or she wants to pay for the number of items selected",
+    "voice_label": 48
+  }
+},
+{
+  "model": "service_development.voiceservicesubelement",
+  "pk": 20,
+  "fields": {
+    "service": 2,
+    "creation_date": "2018-05-01T18:30:26.798Z",
+    "modification_date": "2018-05-01T18:34:13.736Z",
+    "name": "You chose to pay",
+    "description": "Starts the prompt that ends the buying conversation sequence",
+    "voice_label": 49
+  }
+},
+{
+  "model": "service_development.voiceservicesubelement",
+  "pk": 21,
+  "fields": {
+    "service": 2,
+    "creation_date": "2018-05-01T18:31:29.028Z",
+    "modification_date": "2018-05-01T18:34:20.740Z",
+    "name": "Value to pay",
+    "description": "States to the user what value he or she has stated that will be paid",
+    "voice_label": 43
+  }
+},
+{
+  "model": "service_development.voiceservicesubelement",
+  "pk": 22,
+  "fields": {
+    "service": 2,
+    "creation_date": "2018-05-01T18:32:43.309Z",
+    "modification_date": "2018-05-01T18:34:37.752Z",
+    "name": "Zedi",
+    "description": "State the currency to be paid, and finalize with a reference to the final instructions",
+    "voice_label": 50
+  }
+},
+{
+  "model": "service_development.voiceservicesubelement",
+  "pk": 23,
+  "fields": {
+    "service": 2,
+    "creation_date": "2018-05-01T18:33:58.526Z",
+    "modification_date": "2018-05-01T18:33:58.526Z",
+    "name": "We will call back buy",
+    "description": "Finalize the call after the final instructions for the user are given",
+    "voice_label": 51
+  }
+},
+{
+  "model": "service_development.voiceservicesubelement",
+  "pk": 24,
+  "fields": {
+    "service": 2,
+    "creation_date": "2018-05-01T18:56:01.930Z",
+    "modification_date": "2018-05-01T18:56:01.930Z",
+    "name": "What are you trying to sell",
+    "description": "Request the user to input what item is being sold",
+    "voice_label": 52
+  }
+},
+{
+  "model": "service_development.voiceservicesubelement",
+  "pk": 25,
+  "fields": {
+    "service": 2,
+    "creation_date": "2018-05-01T18:56:01.938Z",
+    "modification_date": "2018-05-01T18:56:01.938Z",
+    "name": "Shea Nuts",
+    "description": "The user will be selling shea nuts",
+    "voice_label": null
+  }
+},
+{
+  "model": "service_development.voiceservicesubelement",
+  "pk": 26,
+  "fields": {
+    "service": 2,
+    "creation_date": "2018-05-01T18:56:01.940Z",
+    "modification_date": "2018-05-01T18:56:01.940Z",
+    "name": "Jars of Honey",
+    "description": "The user will be selling jars of honey",
+    "voice_label": null
+  }
+},
+{
+  "model": "service_development.voiceservicesubelement",
+  "pk": 27,
+  "fields": {
+    "service": 2,
+    "creation_date": "2018-05-01T18:56:01.942Z",
+    "modification_date": "2018-05-01T18:56:01.942Z",
+    "name": "Jars of Shea Butter",
+    "description": "The user will be selling jars of Shea Butter",
+    "voice_label": null
+  }
+},
+{
+  "model": "service_development.voiceservicesubelement",
+  "pk": 28,
+  "fields": {
+    "service": 2,
+    "creation_date": "2018-05-01T18:57:15.429Z",
+    "modification_date": "2018-05-01T19:00:27.496Z",
+    "name": "Chosen to Sell Honey",
+    "description": "User feedback for sale of honey",
+    "voice_label": 53
+  }
+},
+{
+  "model": "service_development.voiceservicesubelement",
+  "pk": 29,
+  "fields": {
+    "service": 2,
+    "creation_date": "2018-05-01T18:57:49.558Z",
+    "modification_date": "2018-05-01T19:09:34.540Z",
+    "name": "The item to sell honey",
+    "description": "The item bein sold is honey",
+    "voice_label": 33
+  }
+},
+{
+  "model": "service_development.voiceservicesubelement",
+  "pk": 30,
+  "fields": {
+    "service": 2,
+    "creation_date": "2018-05-01T18:58:25.454Z",
+    "modification_date": "2018-05-01T19:09:43.790Z",
+    "name": "You have chosen to sell Shea Butter",
+    "description": "User will be selling shea butter",
+    "voice_label": 53
+  }
+},
+{
+  "model": "service_development.voiceservicesubelement",
+  "pk": 31,
+  "fields": {
+    "service": 2,
+    "creation_date": "2018-05-01T18:58:57.597Z",
+    "modification_date": "2018-05-01T19:10:04.198Z",
+    "name": "Item to sell Shea Butter",
+    "description": "The item bein sold is shea butter",
+    "voice_label": 32
+  }
+},
+{
+  "model": "service_development.voiceservicesubelement",
+  "pk": 32,
+  "fields": {
+    "service": 2,
+    "creation_date": "2018-05-01T18:59:45.915Z",
+    "modification_date": "2018-05-01T19:01:23.373Z",
+    "name": "You have chosen to sell Shea Nuts",
+    "description": "The item bein sold is Shea Nuts",
+    "voice_label": 53
+  }
+},
+{
+  "model": "service_development.voiceservicesubelement",
+  "pk": 33,
+  "fields": {
+    "service": 2,
+    "creation_date": "2018-05-01T19:00:16.482Z",
+    "modification_date": "2018-05-01T19:08:57.023Z",
+    "name": "Item to sell Shea Nuts",
+    "description": "The item bein sold is Shea Nuts",
+    "voice_label": 34
+  }
+},
+{
+  "model": "service_development.voiceservicesubelement",
+  "pk": 34,
+  "fields": {
+    "service": 2,
+    "creation_date": "2018-05-01T19:02:44.105Z",
+    "modification_date": "2018-05-01T19:09:13.583Z",
+    "name": "How many Shea Nuts sell",
+    "description": "Ask the user how many shea nuts to sell",
+    "voice_label": 54
+  }
+},
+{
+  "model": "service_development.voiceservicesubelement",
+  "pk": 35,
+  "fields": {
+    "service": 2,
+    "creation_date": "2018-05-01T19:04:16.584Z",
+    "modification_date": "2018-05-01T19:10:23.430Z",
+    "name": "How Many Honey Sell",
+    "description": "Ask how many shea nuts to sell",
+    "voice_label": 54
+  }
+},
+{
+  "model": "service_development.voiceservicesubelement",
+  "pk": 36,
+  "fields": {
+    "service": 2,
+    "creation_date": "2018-05-01T19:04:47.460Z",
+    "modification_date": "2018-05-01T19:10:41.096Z",
+    "name": "How many shea butter sell",
+    "description": "Ask how many shea butter jars to sell",
+    "voice_label": 54
+  }
+},
+{
+  "model": "service_development.voiceservicesubelement",
+  "pk": 37,
+  "fields": {
+    "service": 2,
+    "creation_date": "2018-05-01T19:07:08.553Z",
+    "modification_date": "2018-05-01T19:15:01.668Z",
+    "name": "conclude How many to sell question Shea Nut",
+    "description": "Conclude sentense How many to sell",
+    "voice_label": 55
+  }
+},
+{
+  "model": "service_development.voiceservicesubelement",
+  "pk": 38,
+  "fields": {
+    "service": 2,
+    "creation_date": "2018-05-01T19:07:41.713Z",
+    "modification_date": "2018-05-01T19:15:07.873Z",
+    "name": "conclude how many to sell question Shea Butter",
+    "description": "Conclude sentense How many to sell",
+    "voice_label": 55
+  }
+},
+{
+  "model": "service_development.voiceservicesubelement",
+  "pk": 39,
+  "fields": {
+    "service": 2,
+    "creation_date": "2018-05-01T19:08:13.998Z",
+    "modification_date": "2018-05-01T19:15:18.348Z",
+    "name": "conclude how many to sell question honey",
+    "description": "Conclude sentense How many to sell honey",
+    "voice_label": 55
+  }
+},
+{
+  "model": "service_development.voiceservicesubelement",
+  "pk": 40,
+  "fields": {
+    "service": 2,
+    "creation_date": "2018-05-01T19:14:53.743Z",
+    "modification_date": "2018-05-01T19:15:23.592Z",
+    "name": "Ending Sentence Sell",
+    "description": "Start the ending sentence for selling shea butter",
+    "voice_label": 56
   }
 },
 {
@@ -983,20 +1796,154 @@
   "fields": {}
 },
 {
+  "model": "service_development.voiceserviceelement",
+  "pk": 9,
+  "fields": {}
+},
+{
+  "model": "service_development.voiceserviceelement",
+  "pk": 12,
+  "fields": {}
+},
+{
+  "model": "service_development.voiceserviceelement",
+  "pk": 13,
+  "fields": {}
+},
+{
+  "model": "service_development.voiceserviceelement",
+  "pk": 14,
+  "fields": {}
+},
+{
+  "model": "service_development.voiceserviceelement",
+  "pk": 15,
+  "fields": {}
+},
+{
+  "model": "service_development.voiceserviceelement",
+  "pk": 16,
+  "fields": {}
+},
+{
+  "model": "service_development.voiceserviceelement",
+  "pk": 17,
+  "fields": {}
+},
+{
+  "model": "service_development.voiceserviceelement",
+  "pk": 18,
+  "fields": {}
+},
+{
+  "model": "service_development.voiceserviceelement",
+  "pk": 19,
+  "fields": {}
+},
+{
+  "model": "service_development.voiceserviceelement",
+  "pk": 20,
+  "fields": {}
+},
+{
+  "model": "service_development.voiceserviceelement",
+  "pk": 21,
+  "fields": {}
+},
+{
+  "model": "service_development.voiceserviceelement",
+  "pk": 22,
+  "fields": {}
+},
+{
+  "model": "service_development.voiceserviceelement",
+  "pk": 23,
+  "fields": {}
+},
+{
+  "model": "service_development.voiceserviceelement",
+  "pk": 24,
+  "fields": {}
+},
+{
+  "model": "service_development.voiceserviceelement",
+  "pk": 28,
+  "fields": {}
+},
+{
+  "model": "service_development.voiceserviceelement",
+  "pk": 29,
+  "fields": {}
+},
+{
+  "model": "service_development.voiceserviceelement",
+  "pk": 30,
+  "fields": {}
+},
+{
+  "model": "service_development.voiceserviceelement",
+  "pk": 31,
+  "fields": {}
+},
+{
+  "model": "service_development.voiceserviceelement",
+  "pk": 32,
+  "fields": {}
+},
+{
+  "model": "service_development.voiceserviceelement",
+  "pk": 33,
+  "fields": {}
+},
+{
+  "model": "service_development.voiceserviceelement",
+  "pk": 34,
+  "fields": {}
+},
+{
+  "model": "service_development.voiceserviceelement",
+  "pk": 35,
+  "fields": {}
+},
+{
+  "model": "service_development.voiceserviceelement",
+  "pk": 36,
+  "fields": {}
+},
+{
+  "model": "service_development.voiceserviceelement",
+  "pk": 37,
+  "fields": {}
+},
+{
+  "model": "service_development.voiceserviceelement",
+  "pk": 38,
+  "fields": {}
+},
+{
+  "model": "service_development.voiceserviceelement",
+  "pk": 39,
+  "fields": {}
+},
+{
+  "model": "service_development.voiceserviceelement",
+  "pk": 40,
+  "fields": {}
+},
+{
   "model": "service_development.voiceservice",
   "pk": 1,
   "fields": {
     "name": "King's truth checker",
     "description": "Checks the user's knowledge about the king of the Netherlands",
     "creation_date": "2017-04-23T19:23:52.392Z",
-    "modification_date": "2018-04-30T22:49:14.321Z",
-    "active": true,
+    "modification_date": "2018-02-16T09:58:43.936Z",
+    "active": false,
     "_start_element": 2,
     "registration": "preferred",
     "registration_language": true,
     "registration_name": false,
     "supported_languages": [
-      1,
       2,
       3
     ]
@@ -1007,18 +1954,15 @@
   "pk": 2,
   "fields": {
     "name": "Vendu",
-    "description": "Vendu is an auction application",
-    "creation_date": "2018-05-01T10:33:25.487Z",
-    "modification_date": "2018-05-01T10:33:25.487Z",
-    "active": true,
+    "description": "Market Service to Auction Farmed Items",
+    "creation_date": "2018-05-01T08:56:08.503Z",
+    "modification_date": "2018-05-01T08:56:08.503Z",
+    "active": false,
     "_start_element": null,
-    "registration": "preferred",
+    "registration": "required",
     "registration_language": true,
     "registration_name": false,
-    "supported_languages": [
-      2,
-      3
-    ]
+    "supported_languages": []
   }
 },
 {
@@ -1030,13 +1974,23 @@
     "last_name": "Ernia",
     "creation_date": "2018-02-02T11:10:27.670Z",
     "modification_date": "2018-02-12T14:44:24.019Z",
-    "language": 1,
+    "language": null,
     "service": 1
   }
 },
 {
   "model": "service_development.choice",
   "pk": 2,
+  "fields": {}
+},
+{
+  "model": "service_development.choice",
+  "pk": 9,
+  "fields": {}
+},
+{
+  "model": "service_development.choice",
+  "pk": 24,
   "fields": {}
 },
 {
@@ -1053,6 +2007,46 @@
   "fields": {
     "parent": 2,
     "_redirect": 7
+  }
+},
+{
+  "model": "service_development.choiceoption",
+  "pk": 10,
+  "fields": {
+    "parent": 9,
+    "_redirect": 16
+  }
+},
+{
+  "model": "service_development.choiceoption",
+  "pk": 11,
+  "fields": {
+    "parent": 9,
+    "_redirect": null
+  }
+},
+{
+  "model": "service_development.choiceoption",
+  "pk": 25,
+  "fields": {
+    "parent": 24,
+    "_redirect": null
+  }
+},
+{
+  "model": "service_development.choiceoption",
+  "pk": 26,
+  "fields": {
+    "parent": 24,
+    "_redirect": null
+  }
+},
+{
+  "model": "service_development.choiceoption",
+  "pk": 27,
+  "fields": {
+    "parent": 24,
+    "_redirect": null
   }
 },
 {
@@ -1077,6 +2071,215 @@
   "fields": {
     "final_element": false,
     "_redirect": 6
+  }
+},
+{
+  "model": "service_development.messagepresentation",
+  "pk": 12,
+  "fields": {
+    "final_element": false,
+    "_redirect": 13
+  }
+},
+{
+  "model": "service_development.messagepresentation",
+  "pk": 13,
+  "fields": {
+    "final_element": false,
+    "_redirect": 14
+  }
+},
+{
+  "model": "service_development.messagepresentation",
+  "pk": 14,
+  "fields": {
+    "final_element": false,
+    "_redirect": 15
+  }
+},
+{
+  "model": "service_development.messagepresentation",
+  "pk": 15,
+  "fields": {
+    "final_element": false,
+    "_redirect": null
+  }
+},
+{
+  "model": "service_development.messagepresentation",
+  "pk": 16,
+  "fields": {
+    "final_element": false,
+    "_redirect": 18
+  }
+},
+{
+  "model": "service_development.messagepresentation",
+  "pk": 17,
+  "fields": {
+    "final_element": false,
+    "_redirect": 19
+  }
+},
+{
+  "model": "service_development.messagepresentation",
+  "pk": 18,
+  "fields": {
+    "final_element": false,
+    "_redirect": 17
+  }
+},
+{
+  "model": "service_development.messagepresentation",
+  "pk": 19,
+  "fields": {
+    "final_element": false,
+    "_redirect": null
+  }
+},
+{
+  "model": "service_development.messagepresentation",
+  "pk": 20,
+  "fields": {
+    "final_element": false,
+    "_redirect": 21
+  }
+},
+{
+  "model": "service_development.messagepresentation",
+  "pk": 21,
+  "fields": {
+    "final_element": false,
+    "_redirect": 22
+  }
+},
+{
+  "model": "service_development.messagepresentation",
+  "pk": 22,
+  "fields": {
+    "final_element": false,
+    "_redirect": 23
+  }
+},
+{
+  "model": "service_development.messagepresentation",
+  "pk": 23,
+  "fields": {
+    "final_element": true,
+    "_redirect": null
+  }
+},
+{
+  "model": "service_development.messagepresentation",
+  "pk": 28,
+  "fields": {
+    "final_element": false,
+    "_redirect": 29
+  }
+},
+{
+  "model": "service_development.messagepresentation",
+  "pk": 29,
+  "fields": {
+    "final_element": false,
+    "_redirect": 35
+  }
+},
+{
+  "model": "service_development.messagepresentation",
+  "pk": 30,
+  "fields": {
+    "final_element": false,
+    "_redirect": 31
+  }
+},
+{
+  "model": "service_development.messagepresentation",
+  "pk": 31,
+  "fields": {
+    "final_element": false,
+    "_redirect": 36
+  }
+},
+{
+  "model": "service_development.messagepresentation",
+  "pk": 32,
+  "fields": {
+    "final_element": false,
+    "_redirect": 33
+  }
+},
+{
+  "model": "service_development.messagepresentation",
+  "pk": 33,
+  "fields": {
+    "final_element": false,
+    "_redirect": 34
+  }
+},
+{
+  "model": "service_development.messagepresentation",
+  "pk": 34,
+  "fields": {
+    "final_element": false,
+    "_redirect": 37
+  }
+},
+{
+  "model": "service_development.messagepresentation",
+  "pk": 35,
+  "fields": {
+    "final_element": false,
+    "_redirect": 39
+  }
+},
+{
+  "model": "service_development.messagepresentation",
+  "pk": 36,
+  "fields": {
+    "final_element": false,
+    "_redirect": 38
+  }
+},
+{
+  "model": "service_development.messagepresentation",
+  "pk": 37,
+  "fields": {
+    "final_element": false,
+    "_redirect": 40
+  }
+},
+{
+  "model": "service_development.messagepresentation",
+  "pk": 38,
+  "fields": {
+    "final_element": false,
+    "_redirect": 40
+  }
+},
+{
+  "model": "service_development.messagepresentation",
+  "pk": 39,
+  "fields": {
+    "final_element": false,
+    "_redirect": 40
+  }
+},
+{
+  "model": "service_development.messagepresentation",
+  "pk": 40,
+  "fields": {
+    "final_element": true,
+    "_redirect": null
+  }
+},
+{
+  "model": "service_development.userinputcategory",
+  "pk": 1,
+  "fields": {
+    "name": "Number of items to buy",
+    "description": "states the number of items that a custumer wants to buy",
+    "service": 2
   }
 }
 ]
