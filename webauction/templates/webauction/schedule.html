@@ -1,0 +1,54 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'webauction/style.css' %}" />
+
+<h1>Schedule of Vendu</h1>
+
+<table id="scheduletable">
+    <tr>
+        <th>Date and time</th>
+        <th>Item</th>
+        <th>Seller</th>
+        <th>Nr of items</th>
+    </tr>
+    <tr>
+        <td>10-05-18, 10:00h</td>
+        <td>Honey</td>
+        <td>Jamal</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>10-05-18, 10:15h</td>
+        <td>Honey</td>
+        <td>Tygo</td>
+        <td>14</td>
+    </tr>
+    <tr>
+        <td>10-05-18, 10:30h</td>
+        <td>Shea butter</td>
+        <td>Jody</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>10-05-18, 10:45h</td>
+        <td>Shea nuts</td>
+        <td>Bodu</td>
+        <td>20</td>
+    </tr>
+    <tr>
+        <td>11-05-18, 10:00h</td>
+        <td>Honey</td>
+        <td>Resa</td>
+        <td>8</td>
+    </tr>
+    <tr>
+        <td>11-05-18, 10:00h</td>
+        <td>Shea butter</td>
+        <td>Ula</td>
+        <td>10</td>
+    </tr>
+
+</table>
+
+
+<p><a href="{% url 'webauction:index' %}">Go back to the homepage</a>

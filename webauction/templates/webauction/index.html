@@ -1,7 +1,8 @@
 <h1>Web auction</h1>
 
 
-At the moment, available products in the auction are:
+<p>This is the web interface for the Vendu auction application.</br>
+    The next items are being offered during our auctions:</p>
 {% if item_list %}
 <ul>
     {% for item in item_list %}
@@ -11,3 +12,6 @@ At the moment, available products in the auction are:
 {% else %}
 <p>No items are available.</p>
 {% endif %}
+
+<p>Klik <a href="{% url 'webauction:schedule' %}">here</a> to see the schedule for auctions.</br>
+Klik <a href="{% url 'webauction:currentauction' %}">here</a> to go to the current auction.</p>
