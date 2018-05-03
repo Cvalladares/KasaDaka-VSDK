@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83cc6d1c-e1b0-4ea5-9a20-dbdd9d06d1b7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webauction/models.py" afterPath="$PROJECT_DIR$/webauction/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webauction/templates/webauction/index.html" afterPath="$PROJECT_DIR$/webauction/templates/webauction/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webauction/urls.py" afterPath="$PROJECT_DIR$/webauction/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webauction/views.py" afterPath="$PROJECT_DIR$/webauction/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -63,21 +60,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="currentauction.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="currentauction.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webauction/templates/webauction/currentauction.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="81" column="127" lean-forward="false" selection-start-line="81" selection-start-column="127" selection-end-line="81" selection-end-column="127" />
+            <state relative-caret-position="119">
+              <caret line="7" column="5" lean-forward="true" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webauction/templates/webauction/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="58" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="58" />
+            <state relative-caret-position="170">
+              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -130,12 +127,12 @@
         <option value="$PROJECT_DIR$/db_data_backup.json" />
         <option value="$PROJECT_DIR$/vsdk/settings.py" />
         <option value="$PROJECT_DIR$/webauction/urls.py" />
-        <option value="$PROJECT_DIR$/webauction/templates/webauction/index.html" />
         <option value="$PROJECT_DIR$/webauction/models.py" />
         <option value="$PROJECT_DIR$/webauction/views.py" />
         <option value="$PROJECT_DIR$/webauction/templates/webauction/schedule.html" />
         <option value="$PROJECT_DIR$/webauction/static/webauction/style.css" />
         <option value="$PROJECT_DIR$/webauction/templates/webauction/currentauction.html" />
+        <option value="$PROJECT_DIR$/webauction/templates/webauction/index.html" />
       </list>
     </option>
   </component>
@@ -366,12 +363,12 @@
       <workItem from="1524918266188" duration="609000" />
       <workItem from="1525125294987" duration="7402000" />
       <workItem from="1525245935105" duration="184000" />
-      <workItem from="1525246121355" duration="29484000" />
+      <workItem from="1525246121355" duration="30125000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37679000" />
+    <option name="totallyTimeSpent" value="38320000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="952" y="0" width="976" height="1038" extended-state="0" />
@@ -736,14 +733,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webauction/templates/webauction/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="58" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vsdk/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="256">
@@ -786,8 +775,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webauction/templates/webauction/currentauction.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="81" column="127" lean-forward="false" selection-start-line="81" selection-start-column="127" selection-end-line="81" selection-end-column="127" />
+        <state relative-caret-position="119">
+          <caret line="7" column="5" lean-forward="true" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webauction/templates/webauction/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
       </provider>
