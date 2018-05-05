@@ -11,3 +11,14 @@ def index(request):
     }
     return HttpResponse(template.render(context, request))
 
+
+def schedule(request):
+    template = loader.get_template('webauction/schedule.html')
+    context = { }
+    return HttpResponse(template.render(context, request))
+
+
+def currentauction(request):
+    template = loader.get_template('webauction/currentauction.html')
+    context = { }
+    return HttpResponse(template.render(context, request))

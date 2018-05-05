@@ -1,0 +1,89 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'webauction/style.css' %}" />
+
+
+<h1>Current Vendu auction</h1>
+
+</br>
+
+<span  id="bidblock">
+<table>
+<tr>
+    <th>Item</th>
+    <td>Honey</td>
+</tr>
+<tr>
+    <th>Seller</th>
+    <td>Jamal Debassatio</td>
+</tr>
+<tr>
+    <th>Nr of items</th>
+    <td>10</td>
+</tr>
+<tr>
+    <th>Time left</th>
+    <td><span id="time">20</span> seconds</td>
+</tr>
+
+</table>
+
+</br>
+<p>The current bid per item in Cedi is: </br></br>
+    <span id="currentbid">  2.50 </span> for <span id="buyername">the buyer Kevin</span></p>
+
+<button type="button"
+        onclick="changeBid()">
+    Up your bid</button>
+
+</span>
+
+<p><a href="{% url 'webauction:index' %}">Go back to the homepage</a></p>
+
+<script>
+    var interval = setInterval(countdown, 1000);
+
+    function countdown() {
+        var time = document.getElementById('time').innerText;
+        document.getElementById('time').innerText = time-1;
+
+        if(document.getElementById('time').innerText == 0) {
+            clearInterval(interval);
+            endBid();
+        }
+    }
+
+    function changeBid() {
+        if(document.getElementById('buyername').innerText != 'you') {
+            var current = document.getElementById('currentbid').innerText;
+            current = parseFloat(current);
+            document.getElementById('currentbid').innerText = current + 0.5;
+            document.getElementById('buyername').innerText = 'you';
+
+            if (current == 2.50) {
+                setTimeout(extraBid, 2000);
+            }
+        }
+
+        else {
+            alert("You already are the highest bidder");
+        }
+    }
+
+    function extraBid() {
+        var current = document.getElementById('currentbid').innerText;
+        current = parseFloat(current);
+        document.getElementById('currentbid').innerText = current + 0.5;
+        document.getElementById('buyername').innerText = 'the buyer Kevin';
+    }
+
+    function endBid() {
+        if(document.getElementById('buyername').innerText != 'you') {
+            document.getElementById('bidblock').innerHTML = 'Unfortunately, you did not win the auction. Better luck next time.';
+            return;
+        }
+
+        document.getElementById('bidblock').innerHTML = 'You won the auction! The seller will contact you about payment and delivery.';
+    }
+
+</script>
