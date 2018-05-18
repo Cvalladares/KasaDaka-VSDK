@@ -54,7 +54,7 @@ def bid(request):
 	return render(request, template_name, {'auction': current_auction, 'bids': bids})
 
 def vxml(request):
-	template = loader.get_template('vxml/index.xml')
+	template = loader.get_template('vxml/default.xml')
 	response = HttpResponse(template.render(), content_type='text/xml')
 	return response
 

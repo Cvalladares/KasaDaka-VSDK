@@ -1,0 +1,35 @@
+<vxml xmlns="http://www.w3.org/2001/vxml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.w3.org/2001/vxml http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.xsd">
+<property name="inputmodes" value="dtmf"/>
+<!--  Kasadaka VoiceXML File  -->
+<form id="welcome-and-choice-to-buy-or-sell">
+<field name="choice">
+<prompt>
+<audio src="http://django-static.vps.abaart.nl/group10/django/Greeting.wav"/>
+<audio src="http://django-static.vps.abaart.nl/group10/django/pre_choice_option_en.wav"/>
+<audio src="http://django-static.vps.abaart.nl/group10/django/Buy_xXdG957.wav"/>
+<audio src="http://django-static.vps.abaart.nl/group10/django/post_choice_option_en.wav"/>
+<audio src="http://django-static.vps.abaart.nl/group10/django/1_en.wav"/>
+<audio src="http://django-static.vps.abaart.nl/group10/django/pre_choice_option_en.wav"/>
+<audio src="http://django-static.vps.abaart.nl/group10/django/Sell.wav"/>
+<audio src="http://django-static.vps.abaart.nl/group10/django/post_choice_option_en.wav"/>
+<audio src="http://django-static.vps.abaart.nl/group10/django/2_en.wav"/>
+</prompt>
+<grammar xml:lang="en-US" root="MYRULE" mode="dtmf">
+<rule id="MYRULE" scope="public">
+<one-of>
+<item>1</item>
+<item>2</item>
+</one-of>
+</rule>
+</grammar>
+<filled>
+<if cond="choice == '1'">
+<goto next="/vxml/message/16/58"/>
+<elseif cond="choice == '2'"/>
+<goto next="/vxml/message/72/58"/>
+<else/>
+</if>
+</filled>
+</field>
+</form>
+</vxml>
