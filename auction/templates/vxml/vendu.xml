@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml version="2.1">
+	<!-- This is a global Variable that stores the user's choice -->
+	<var name="theitem"/>
+	
+	<!-- This is the initial menu that lets the user decide whether you want
+			to buy or sell-->
+  <menu id="menu1" dtmf="true">
+   <prompt>
+	Welcome to Vendu. <break size="medium"/> Press 1 to buy a product. Press 2 to sell a product
+   </prompt>
+   <choice next = "#buyform"/>
+   <choice next = "#sellform"/>
+  </menu>
+ 
+	<!-- This is the initial form specifying how many goods are left to buy and prompts
+		  how many goods you want to buy-->
+  <form id="buyform">
+	  <field name = "numberofitems" >
+			<!-- This is an open ended grammar to let the user specify how many items to buy
+				  Currently it is limited to up to 9 items and allows 0 as an input-->
+			<grammar xml:lang="en-US" root = "openDigitInput" mode="dtmf">
+			  <rule id="openDigitInput" scope="public" >
+					  <one-of>                      
+						  <item>1</item>                
+						  <item>2</item>                
+						  <item>3</item>                
+						  <item>4</item>                
+						  <item>5</item>                
+						  <item>6</item>                
+						  <item>7</item>
+						  <item>8</item>                
+						  <item>9</item>                
+						  <item>0</item>                
+					  </one-of>                     
+			  </rule>           
+			</grammar>    
+		
+			<prompt>
+			You chose to buy. At the moment, we have a total of <break size="small"/>50 <break size="small"/>Jars of Shea Butter to sell. 
+				How many Jars would you like to buy?		
+			</prompt>		
+			
+			<nomatch>
+			 <prompt>
+			 Please enter your number again.
+			 </prompt>
+			 <reprompt/>
+			</nomatch>
+
+	  </field>
+	  
+	  <!-- Repeat the user choice and transfer the user to the following form (asking for bid)-->
+	  <filled>          
+		<prompt>
+			You have chosen to buy <break size="small"/><value expr="numberofitems"/>.
+		</prompt>
+		<goto next="#makeNewBid"/>
+      </filled>  
+  </form>
+
+	<!-- Request the User to input how much to pay for the ammount of goods selected -->
+    <form id="makeNewBid">
+		<!-- This grammar is limited from 0 to 9 -->
+	  <field name = "payment">
+			<grammar xml:lang="en-US" root = "openDigitInput" mode="dtmf">
+			  <rule id="openDigitInput" scope="public" >
+					  <one-of>                      
+						  <item>1</item>                
+						  <item>2</item>                
+						  <item>3</item>                
+						  <item>4</item>                
+						  <item>5</item>                
+						  <item>6</item>                
+						  <item>7</item>
+						  <item>8</item>                
+						  <item>9</item>                
+						  <item>0</item>                
+					  </one-of>                     
+			  </rule>           
+			</grammar>    
+			
+			<prompt>
+				How Much would you like to pay for these items?
+			</prompt>		
+			
+			<nomatch>
+			 <prompt>
+			 Please enter your number again.
+			 </prompt>
+			 <reprompt/>
+			</nomatch>
+	  </field>
+			
+	<!--Confirm the User's choice and instruct them about further steps-->	
+	  <filled>          
+		<prompt>
+			You have chosen to pay  <break size="small"/><value expr="payment"/> <break size="small"/>Zedi.		
+		</prompt>
+		<prompt>
+			We will call you to let you know<break size="small"/> if you have won this bid <break size="small"/>
+			or if somebody is paying more than you. <break size="medium"/>Goodbye
+		</prompt>
+		
+      </filled>  
+
+
+  </form>
+  
+  <!-- This form has to do with selling-->
+  <form id="sellform">
+		<!-- This grammar uses dtmf and has 3 different choices only-->	
+		  <field name = "itemtosell">
+			<grammar xml:lang="en-US" root = "openDigitInput" mode="dtmf">
+			  <rule id="openDigitInput" scope="public" >
+					  <one-of>                      
+						  <item>1</item>                
+						  <item>2</item>                
+						  <item>3</item>                
+					  </one-of>                     
+			  </rule>           
+			</grammar>    
+			
+			<prompt>
+				What are you trying to sell? Press 1 for Shea nuts.  Press 2 for Shea Butter.  Press 3 for Honey.
+			</prompt>					
+			
+			<nomatch>
+			 <prompt>
+				Press 1 for Shea nuts.  Press 2 for Shea Butter.  Press 3 for Honey.
+			 </prompt>
+			 <reprompt/>
+			</nomatch>
+			
+		</field>
+		
+	  <filled>   
+	  <!-- This section stores the user's item choice in a global variable to be 
+	  used in the final section-->
+		<if cond="itemtosell=='1'">
+			<assign name="theitem" expr="'Shea Nuts'" />
+		</if>
+		<if cond="itemtosell=='2'">
+			<assign name="theitem" expr="'Jars of Shea Butter'" />
+		</if>
+		<if cond="itemtosell=='3'">
+			<assign name="theitem" expr="'Jars of Honey'" />		
+		</if>
+		
+		<goto next="#saleQuantity"/>	
+		
+      </filled>  
+  </form>
+  
+  <!-- Ask the user the quantity of items to sell-->
+  <form id="saleQuantity">
+  		<field name = "numitems">
+			<grammar xml:lang="en-US" root = "openDigitInput" mode="dtmf">
+			  <rule id="openDigitInput" scope="public" >
+					  <one-of>                      
+						  <item>1</item>                
+						  <item>2</item>                
+						  <item>3</item>                
+						  <item>4</item>                
+						  <item>5</item>                
+						  <item>6</item>                
+						  <item>7</item>
+						  <item>8</item>                
+						  <item>9</item>                
+						  <item>0</item>                
+					  </one-of>                     
+			  </rule>           
+			</grammar>
+
+			<prompt>
+				You have chosen to sell <break size="small"/> <value expr="theitem"/>.  How many <value expr="theitem"/> do you want to sell?
+			</prompt>
+			
+			<nomatch>
+			 <prompt>
+			 Please enter your number again.
+			 </prompt>
+			 <reprompt/>
+			</nomatch>
+		</field>
+		
+		<filled>
+			<prompt>
+				You have chosen to sell <value expr="numitems"/> of <value expr="theitem"/>.
+				We will call you when buyers want to buy your goods.
+			</prompt>
+		</filled>
+  </form>
+  
+
+  <form id="hangupBid">
+		
+  </form>
+  
+</vxml>

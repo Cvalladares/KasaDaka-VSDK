@@ -1,9 +1,11 @@
+import os
 import time
 import datetime
 
 from django.utils import timezone
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
+from django.http import HttpResponse
 from django.template import loader
 from django.urls import reverse
 from django.views import generic
@@ -51,6 +53,11 @@ def bid(request):
 		return HttpResponseRedirect("/auction/")
 
 	return render(request, template_name, {'auction': current_auction, 'bids': bids})
+
+def vxml(request):
+	template = loader.get_template('vxml/index.xml')
+	response = HttpResponse(template.render(), content_type='text/xml')
+	return response
 
 def add_new_product(request):
 	new_product = Product()
