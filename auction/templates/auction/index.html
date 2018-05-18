@@ -1,0 +1,110 @@
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}/static/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}/static/css/bootstrap-responsive.min.css"/> 
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}/static/css/style.css"/> 
+<script type="text/javascript" src="{{STATIC_URL}}/static/js/bootstrap.min.js"></script>
+
+<div class="container">
+    {% if not current_auction == None %}
+	<div class="row" id="current-auction">
+		<div class="col-xl border">
+			<a href="{% url 'auction:bid' %}">
+				<h1>Running auctions</h1>
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Product</th>
+							<th scope="col">Start Price</th>
+							<th scope="col">Scheduled start</th>
+							<th scope="col">Scheduled end</th>
+							<th scope="col">Amount</th>
+							<th scope="col">Current highest bid</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>{{ current_auction.auction_id }}</td>
+							<td>{{ current_auction.product.product_name }}</td>
+							<td>{{ current_auction.starting_price }}</td>
+							<td>{{ current_auction.auction_start }}</td>
+							<td>{{ current_auction.auction_end }}</td>
+							<td>{{ current_auction.quantity }}</td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</a>
+		</div>
+	</div>
+	{% endif %}
+	<div class="row">
+		<div class="col-xl border-bottom border-left border-right">
+			<h1>New auction</h1>
+			<form action="{% url 'auction:create_new_auction' %}" method="POST">
+				{% csrf_token %}
+				<div class="form-group">
+					<label for="product">Select your product</label>
+					<select class="form-control" id="product" name="product">
+
+					{% for product in products %}
+					<option value={{ product.product_id }}>{{ product.product_name }}</option>
+					{% endfor %}
+
+					</select>
+				</div>
+				<div class="row">
+					<div class="col-xl">
+						<div class="form-group">
+							<label for="quantity">Quantity</label>
+							<input type="text" class="form-control" name="quantity" aria-describedby="quantity_help" placeholder="0">
+							<small id="quantity_help" class="form-text text-muted">Enter the amount of products you want to sell.</small>
+						</div>	
+					</div>
+					<div class="col-xl">
+						<div class="form-group">
+							<div class="col-xl">
+								<label for="starting_price">Price</label>
+								<input type="text" class="form-control" name="starting_price" aria-describedby="starting_price_help" placeholder="0.00">
+								<small id="starting_price_help" class="form-text text-muted">Enter the price per unit</small>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xl border">
+			<h1>Scheduled auctions</h1>
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Product</th>
+						<th scope="col">Start Price</th>
+						<th scope="col">Scheduled start</th>
+						<th scope="col">Scheduled end</th>
+						<th scope="col">Amount</th>
+						<th scope="col">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for auction in auctions %}
+					<tr>
+						<td>{{ auction.auction_id }}</td>
+						<td>{{ auction.product.product_name }}</td>
+						<td>{{ auction.starting_price }}</td>
+						<td>{{ auction.auction_start }}</td>
+						<td>{{ auction.auction_end }}</td>
+						<td>{{ auction.quantity }}</td>
+						<td><a class="btn btn-danger btn-sm" href="{% url 'auction:delete_auction' auction.auction_id %}">Delete</a></td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

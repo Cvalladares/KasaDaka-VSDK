@@ -23,6 +23,7 @@ from django.urls import include, path
 admin.site.site_header = _("KasaDaka Voice Services")
 
 urlpatterns = [
+    path('auction/', include('auction.urls')),
     path('webauction/', include('webauction.urls')),
     url(r'^', admin.site.urls),
     url(r'^vxml/', include('vsdk.service_development.urls')),
