@@ -31,9 +31,9 @@ SECRET_KEY = 'tk2(l(00&kfe7j97j$dvgz&b6r!kk_zbse1(9w*eoc$bcwu773'
 ##########
 #Use True on your local PC, False on Heroku!!
 ########
-#DEBUG = True
+DEBUG = True
 
-DEBUG = False
+# DEBUG = False
 
 
 ALLOWED_HOSTS = ['*']
@@ -42,6 +42,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'auction.apps.AuctionConfig',
     'webauction.apps.WebauctionConfig',
     'vsdk.service_development.apps.ServiceDevelopmentConfig',
     'storages',
@@ -113,7 +114,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
@@ -125,7 +125,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -146,9 +146,6 @@ MEDIA_URL = '/uploads/'
 
 # Update database configuration with $DATABASE_URL.ALLOWED_HOSTSimport
 # dj_database_url
-
-
-
 
 try:
     SFTP_PASS =  os.environ['SFTP_PASS']

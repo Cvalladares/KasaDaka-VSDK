@@ -1,0 +1,31 @@
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}/static/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}/static/css/bootstrap-responsive.min.css"/> 
+<script type="text/javascript" src="{{STATIC_URL}}/static/js/bootstrap.min.js"></script>
+
+<div class="container">
+	<div class="row border">
+		<div class="col-xl">
+			<h1>Products</h1>
+			<ul>
+				{% for product in query_results %}
+					<li>{{ product.product_name }}</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+	<div class="row border-right border-bottom border-left">
+		<div class="col-xl">
+			<h1>Add product</h1>
+			<form action="{% url 'auction:add_new_product' %}" method="POST">
+				{% csrf_token %}
+				<div class="form-group">
+					<label for="product_name">Product name</label>
+				    <input type="text" class="form-control" name="product_name" aria-describedby="product_name_help" placeholder="Enter product name...">
+				    <small id="product_name_help" class="form-text text-muted">Be sure to enter the name of your product.</small>
+				</div>
+
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>	
+		</div>
+	</div>
+</div>
