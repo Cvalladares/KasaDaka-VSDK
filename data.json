@@ -1,0 +1,10 @@
+/app/.heroku/python/lib/python3.6/site-packages/psycopg2/__init__.py:144: UserWarning: The psycopg2 wheel package will be renamed from release 2.8; in order to keep installing from binary please use "pip install psycopg2-binary" instead. For details see: <http://initd.org/psycopg/docs/install.html#binary-install-from-pypi>.
+  """)
+usage: manage.py dumpdata [-h] [--version] [-v {0,1,2,3}]
+                          [--settings SETTINGS] [--pythonpath PYTHONPATH]
+                          [--traceback] [--no-color] [--format FORMAT]
+                          [--indent INDENT] [--database DATABASE] [-e EXCLUDE]
+                          [--natural-foreign] [--natural-primary] [-a]
+                          [--pks PRIMARY_KEYS] [-o OUTPUT]
+                          [app_label[.ModelName] [app_label[.ModelName] ...]]
+manage.py dumpdata: error: ambiguous option: --natural could match --natural-foreign, --natural-primary
