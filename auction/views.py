@@ -1,6 +1,6 @@
 import time
 import datetime
-
+import math
 from django.utils import timezone
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
@@ -55,7 +55,17 @@ def bid(request):
     if current_auction is None:
         return HttpResponseRedirect("/auction/")
 
-    return render(request, template_name, {'auction': current_auction, 'bids': bids})
+    now = datetime.datetime.now()
+    time_since_now = now - current_auction.auction_start
+    reduction = math.floor(time_since_now.seconds / 60)
+
+    if reduction > 10:
+    	reduction = 10
+
+    time_interest = 10
+    current_price = current_auction.starting_price + time_interest - reduction
+
+    return render(request, template_name, {'auction': current_auction, 'bids': bids, 'current_price': current_price})
 
 
 def vxml(request):
