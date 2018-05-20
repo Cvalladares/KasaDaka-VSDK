@@ -16,7 +16,7 @@
 						<th scope="col">Scheduled start</th>
 						<th scope="col">Scheduled end</th>
 						<th scope="col">Amount</th>
-						<th scope="col">Current highest bid</th>
+						<th scope="col">Current selling price</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -27,7 +27,7 @@
 						<td>{{ auction.auction_start }}</td>
 						<td>{{ auction.auction_end }}</td>
 						<td>{{ auction.quantity }}</td>
-						<td></td>
+						<td>{{ current_price }}</td>
 					</tr>
 				</tbody>
 			</table>
