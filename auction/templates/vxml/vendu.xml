@@ -58,43 +58,30 @@
     <form id="makeNewBid">
 		<!-- This grammar is limited from 0 to 9 -->
 	  <field name = "payment" type="digits?minlength=1;maxlength=2">
-			<grammar xml:lang="en-US" root = "openDigitInput" mode="dtmf">
-			  <rule id="openDigitInput" scope="public" >
-					  <one-of>                      
-						  <item>1</item>                
-						  <item>2</item>                
-						  <item>3</item>                
-						  <item>4</item>                
-						  <item>5</item>                
-						  <item>6</item>                
-						  <item>7</item>
-						  <item>8</item>                
-						  <item>9</item>                
-						  <item>0</item>                
-					  </one-of>                     
-			  </rule>           
-			</grammar>    
-			
+
 			<prompt>
-				How Much would you like to pay for these items?
+				<!--How Much would you like to pay for these items? -->
+				<audio src="http://django-static.vps.abaart.nl/group10/django/HowMuchWouldYouLikeToPay.wav"/>
 			</prompt>		
 			
-			<nomatch>
-			 <prompt>
-			 Please enter your number again.
-			 </prompt>
-			 <reprompt/>
-			</nomatch>
+            <noinput>
+				<reprompt/>
+            </noinput>
+            <nomatch>
+				<reprompt/>
+            </nomatch>
 	  </field>
 			
 	<!--Confirm the User's choice and instruct them about further steps-->	
 	  <filled>          
+
+		<!-- TODO: "You have chosen to pay X Zedi" -->
+		<!-- TODO: "Paying at least the base ammount"-->
 		<prompt>
-			You have chosen to pay  <break size="small"/><value expr="payment"/> <break size="small"/>Zedi.		
-		</prompt>
-		<prompt>
-			We will call you to let you know<break size="small"/> if you have won this bid <break size="small"/>
-			or if somebody is paying more than you. <break size="medium"/>Goodbye
+			<!--We will call you to let you know if you have won this bid or
+			if somebody is paying more than you. Goodbye-->
+			<audio src="http://django-static.vps.abaart.nl/group10/django/WeWillCallYouBID.wav"/>
+			<!-- TODO: "Submit the values entered as a post" -->
 		</prompt>
 		
       </filled>  
