@@ -7,7 +7,15 @@
 			to buy or sell-->
   <menu id="menu1" dtmf="true">
    <prompt>
-	Welcome to Vendu. <break size="medium"/> Press 1 to buy a product. Press 2 to sell a product
+		<audio src="http://django-static.vps.abaart.nl/group10/django/Greeting.wav"/>
+		<audio src="http://django-static.vps.abaart.nl/group10/django/pre_choice_option_en.wav"/>
+		<audio src="http://django-static.vps.abaart.nl/group10/django/Buy_xXdG957.wav"/>
+		<audio src="http://django-static.vps.abaart.nl/group10/django/post_choice_option_en.wav"/>
+		<audio src="http://django-static.vps.abaart.nl/group10/django/1_en.wav"/>
+		<audio src="http://django-static.vps.abaart.nl/group10/django/pre_choice_option_en.wav"/>
+		<audio src="http://django-static.vps.abaart.nl/group10/django/Sell.wav"/>
+		<audio src="http://django-static.vps.abaart.nl/group10/django/post_choice_option_en.wav"/>
+		<audio src="http://django-static.vps.abaart.nl/group10/django/2_en.wav"/>
    </prompt>
    <choice next = "#buyform"/>
    <choice next = "#sellform"/>
@@ -16,45 +24,32 @@
 	<!-- This is the initial form specifying how many goods are left to buy and prompts
 		  how many goods you want to buy-->
   <form id="buyform">
-	  <field name = "numberofitems" >
+	  <field name = "numberofitems" type="digits?minlength=1;maxlength=2">
 			<!-- This is an open ended grammar to let the user specify how many items to buy
 				  Currently it is limited to up to 9 items and allows 0 as an input-->
-			<grammar xml:lang="en-US" root = "openDigitInput" mode="dtmf">
-			  <rule id="openDigitInput" scope="public" >
-					  <one-of>                      
-						  <item>1</item>                
-						  <item>2</item>                
-						  <item>3</item>                
-						  <item>4</item>                
-						  <item>5</item>                
-						  <item>6</item>                
-						  <item>7</item>
-						  <item>8</item>                
-						  <item>9</item>                
-						  <item>0</item>                
-					  </one-of>                     
-			  </rule>           
-			</grammar>    
-		
 			<prompt>
-			You chose to buy. At the moment, we have a total of <break size="small"/>50 <break size="small"/>Jars of Shea Butter to sell. 
-				How many Jars would you like to buy?		
+				<!-- You chose to buy. At the moment we have a total of.. -->
+				<audio src="http://django-static.vps.abaart.nl/group10/django/YouChoseToBuy.wav"/>
+				<!-- NUMBER-->
+				<audio src="{{ quantity_for_sale }}"/>
+                <!--Item for sale-->
+                <audio src="{{ item_on_schedule }}"/>
+			    <!--How many jars would you like to buy-->
+                <audio src="http://django-static.vps.abaart.nl/group10/django/HowManyJars.wav"/>
 			</prompt>		
 			
-			<nomatch>
-			 <prompt>
-			 Please enter your number again.
-			 </prompt>
-			 <reprompt/>
-			</nomatch>
+            <noinput>
+                <reprompt/>
+            </noinput>
+            <nomatch>
+              <reprompt/>
+            </nomatch>
 
 	  </field>
 	  
 	  <!-- Repeat the user choice and transfer the user to the following form (asking for bid)-->
 	  <filled>          
-		<prompt>
-			You have chosen to buy <break size="small"/><value expr="numberofitems"/>.
-		</prompt>
+        <!-- TODO: Create Feedback "You chose to buy N items" -->
 		<goto next="#makeNewBid"/>
       </filled>  
   </form>
@@ -62,7 +57,7 @@
 	<!-- Request the User to input how much to pay for the ammount of goods selected -->
     <form id="makeNewBid">
 		<!-- This grammar is limited from 0 to 9 -->
-	  <field name = "payment">
+	  <field name = "payment" type="digits?minlength=1;maxlength=2">
 			<grammar xml:lang="en-US" root = "openDigitInput" mode="dtmf">
 			  <rule id="openDigitInput" scope="public" >
 					  <one-of>                      
