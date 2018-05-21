@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <vxml version="2.1">
-	<prompt>
-		<audio src="http://django-static.vps.abaart.nl/group10/django/Greeting.wav"/>
-	</prompt>
+	<menu id="menu1" dtmf="true">
+		<prompt>
+			<audio src="http://django-static.vps.abaart.nl/group10/django/Greeting.wav"/>
+			<audio src="http://django-static.vps.abaart.nl/group10/django/pre_choice_option_en.wav"/>
+			<audio src="http://django-static.vps.abaart.nl/group10/django/Buy_xXdG957.wav"/>
+			<audio src="http://django-static.vps.abaart.nl/group10/django/post_choice_option_en.wav"/>
+			<audio src="http://django-static.vps.abaart.nl/group10/django/1_en.wav"/>
+			<audio src="http://django-static.vps.abaart.nl/group10/django/pre_choice_option_en.wav"/>
+			<audio src="http://django-static.vps.abaart.nl/group10/django/Sell.wav"/>
+			<audio src="http://django-static.vps.abaart.nl/group10/django/post_choice_option_en.wav"/>
+			<audio src="http://django-static.vps.abaart.nl/group10/django/2_en.wav"/>
+		</prompt>
+
+		<choice next = "#buyform"/>
+		<choice next = "#sellform"/>
+	</menu>
+
+	<form id="buyform"></form>
+	<form id="sellform"></form>
 </vxml>
