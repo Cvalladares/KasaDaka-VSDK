@@ -25,8 +25,10 @@ def index(request):
         if auction.auction_start.replace() <= datetime.datetime.now() <= auction.auction_end:
             current_auction = auction
 
-	return render(request, template_name,
-				  {'products': products, 'auctions': auctions, 'current_auction': current_auction, 'products_left': get_products_left(current_auction)})
+        return render(request, template_name,
+                      {'products': products, 'auctions': auctions, 'current_auction': current_auction,
+                       'products_left': get_products_left(current_auction)})
+
 
 def product(request):
     model = Product
@@ -54,12 +56,11 @@ def bid(request):
     if current_auction is None:
         return HttpResponseRedirect("/auction/")
 
-
     return render(request, template_name, {'auction': current_auction,
-                                       'bids': bids,
-                                       'current_price': get_current_price(current_auction.auction_start,
-                                                                          current_auction.starting_price),
-                                       'products_left': get_products_left(current_auction)})
+                                           'bids': bids,
+                                           'current_price': get_current_price(current_auction.auction_start,
+                                                                              current_auction.starting_price),
+                                           'products_left': get_products_left(current_auction)})
 
 
 def vxml(request):
@@ -76,7 +77,6 @@ def vxml(request):
     for auction in auctions:
         if auction.auction_start.replace() <= datetime.datetime.now() <= auction.auction_end:
             current_auction = auction
-
 
     # Generate the URL for the Wav file.  All wave files must be named as <number>_en.wav in
     #   order for this to work
@@ -166,7 +166,6 @@ def create_new_auction_now(request):
     new_auction.creation_date = timezone.now()
     new_auction.save()
 
-
     return HttpResponseRedirect("/auction/")
 
 
@@ -176,39 +175,39 @@ def delete_auction(request, auction_id):
 
 
 def place_bid(request):
-	template_name = 'bid/index.html'
-	auction = Auction.objects.get(pk=request.POST['auction_id'])
+    template_name = 'bid/index.html'
+    auction = Auction.objects.get(pk=request.POST['auction_id'])
 
-	price = get_current_price(auction.auction_start, auction.starting_price)
-	quantity_left = get_products_left(auction)
+    price = get_current_price(auction.auction_start, auction.starting_price)
+    quantity_left = get_products_left(auction)
 
-	# If invalid bid price
-	if float(request.POST['bid']) < price or quantity_left < float(request.POST['quantity']):
+    # If invalid bid price
+    if float(request.POST['bid']) < price or quantity_left < float(request.POST['quantity']):
 
-		error_message = ""
-		if quantity_left < float(request.POST['quantity']):
-			error_message = "Your order is too large"
-		if float(request.POST['bid']) < price:
-			error_message = "The price you entered is to low"
+        error_message = ""
+        if quantity_left < float(request.POST['quantity']):
+            error_message = "Your order is too large"
+        if float(request.POST['bid']) < price:
+            error_message = "The price you entered is to low"
 
-		return render(request, template_name, {
-			'auction': auction,
-			'owner': request.POST['owner'],
-			'bid': request.POST['bid'],
-			'price_error': error_message,
-			'quantity': request.POST['quantity'],
-			'current_price': price,
-			'products_left': quantity_left})
+        return render(request, template_name, {
+            'auction': auction,
+            'owner': request.POST['owner'],
+            'bid': request.POST['bid'],
+            'price_error': error_message,
+            'quantity': request.POST['quantity'],
+            'current_price': price,
+            'products_left': quantity_left})
 
-	new_bid = Bid()
-	new_bid.auction = auction
-	new_bid.owner = request.POST['owner']
-	new_bid.bid = request.POST['bid']
-	new_bid.quantity = request.POST['quantity']
-	new_bid.creation_date = timezone.now()
-	new_bid.save()
+    new_bid = Bid()
+    new_bid.auction = auction
+    new_bid.owner = request.POST['owner']
+    new_bid.bid = request.POST['bid']
+    new_bid.quantity = request.POST['quantity']
+    new_bid.creation_date = timezone.now()
+    new_bid.save()
 
-	return HttpResponseRedirect("/auction/bid")
+    return HttpResponseRedirect("/auction/bid")
 
 
 # Helper methods
@@ -220,15 +219,16 @@ def get_current_price(start_time, start_price):
     if time_interest < 0:
         time_interest = 0
 
-	return start_price + time_interest
+        return start_price + time_interest
+
 
 def get_products_left(auction):
-	if auction is not None:
-		bids = Bid.objects.filter(auction__auction_id=auction.auction_id)
+    if auction is not None:
+        bids = Bid.objects.filter(auction__auction_id=auction.auction_id)
 
-		total_order_size = 0
-		for bid in bids:
-			total_order_size += bid.quantity
+        total_order_size = 0
+        for bid in bids:
+            total_order_size += bid.quantity
 
-		return auction.quantity - total_order_size
-	return "-"
+        return auction.quantity - total_order_size
+    return "-"
