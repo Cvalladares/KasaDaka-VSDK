@@ -11,6 +11,7 @@ from django.views import generic
 
 from .models import Product, Auction, Bid
 
+
 def index(request):
     template_name = 'auction/index.html'
     products = Product.objects.all()
@@ -77,17 +78,16 @@ def vxml(request):
     # Generate the URL for the Wav file.  All wave files must be named as <number>_en.wav in
     #   order for this to work
     quantity_for_sale = '{}{}{}'.format('http://django-static.vps.abaart.nl/group10/django/',
-                                        current_auction.quantity,
+                                        get_products_left(current_auction),
                                         '_en.wav')
     item = current_auction.product.audio_url
     auction_id = current_auction.auction_id
     ###################SELLING LOGIC###############################
 
     # TODO: Find a better way to determine a limit on the products that can be sold
-
     # Get top 5 products for sale or up to the number of products in the databasse,
     #   whichever is smallest
-    products = Product.objects.all()[:min(Product.objects.all().length(), 5)]
+    products = Product.objects.all()
 
     # Lists containing voiceXML components to be added dynamically to the VoiceXML
     product_audios = list()
@@ -97,9 +97,7 @@ def vxml(request):
     for idx, aProduct in enumerate(products):
         # Generate a list of conditionals to determine which items were selected
         #   by the user
-        product_conditionals.append(
-            '<if cond="itemtosell==\'{}\'"><assign name="product" expr=\"\'{}\'\" /></if>\n'.format(idx, aProduct.product_id))
-        
+        product_conditionals.append('<if cond="itemtosell==\'{}\'"><assign name="product" expr=\"\'{}\'\" /></if>\n'.format(idx, aProduct.product_id))
         # Generate a list of audio_urls for the product
         product_audios.append(aProduct.audio_url)
         item_indexes.append('<item>{}</item>\n'.format(idx))
@@ -108,9 +106,8 @@ def vxml(request):
                                       'quantity_for_sale': quantity_for_sale,
                                       'item_on_schedule': item,
                                       'product_audios': product_audios,
-                                      'product_conditionals': product_conditionals,
-                                      'item_indexes': item_indexes},
-                  content_type='text/xml')
+                                      'product_conditionals': ''.join(product_conditionals),
+                                      'item_indexes': ''.join(item_indexes)}, content_type='text/xml')
 
 def voice(request):
     template_name = 'vxml/vendu_voice.xml'
