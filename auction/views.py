@@ -12,6 +12,18 @@ from django.views import generic
 from .models import Product, Auction, Bid
 
 
+def get_products_left(auction):
+    if auction is not None:
+        bids = Bid.objects.filter(auction__auction_id=auction.auction_id)
+
+        total_order_size = 0
+        for bid in bids:
+            total_order_size += bid.quantity
+
+        return auction.quantity - total_order_size
+    return "-"
+
+
 def index(request):
     template_name = 'auction/index.html'
     products = Product.objects.all()
@@ -27,6 +39,13 @@ def index(request):
 
         return render(request, template_name,
                       {'products': products, 'auctions': auctions, 'current_auction': current_auction,
+                       'products_left': get_products_left(current_auction)})
+
+    if current_auction == None:
+        return render(request, template_name,
+                      {'products': list(),
+                       'auctions': list(),
+                       'current_auction': None,
                        'products_left': get_products_left(current_auction)})
 
 
@@ -220,15 +239,3 @@ def get_current_price(start_time, start_price):
         time_interest = 0
 
         return start_price + time_interest
-
-
-def get_products_left(auction):
-    if auction is not None:
-        bids = Bid.objects.filter(auction__auction_id=auction.auction_id)
-
-        total_order_size = 0
-        for bid in bids:
-            total_order_size += bid.quantity
-
-        return auction.quantity - total_order_size
-    return "-"
