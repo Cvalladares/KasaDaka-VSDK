@@ -133,7 +133,7 @@
 	  <filled>   
 	  <!-- This section stores the user's item choice in a global variable to be 
 	  used in the final section-->
-		{{product_conditionals}}
+		{{ product_conditionals }}
 		
 		<goto next="#saleQuantity"/>	
 		
