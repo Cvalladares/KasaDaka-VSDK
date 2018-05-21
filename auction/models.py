@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Product(models.Model):
     product_id = models.AutoField(primary_key=True)
     product_name = models.CharField(max_length=200)
@@ -10,10 +9,10 @@ class Product(models.Model):
     def __str__(self):
         return self.product_name
 
-
 class Auction(models.Model):
     auction_id = models.AutoField(primary_key=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    phone_number = models.CharField(max_length=200, default="")
     quantity = models.PositiveIntegerField()
     starting_price = models.DecimalField(default=0, max_digits=5, decimal_places=2)
     auction_start = models.DateTimeField()
@@ -22,7 +21,6 @@ class Auction(models.Model):
 
     def __str__(self):
         return "Auction of {}".format(product.product_name)
-
 
 class Bid(models.Model):
     bid_id = models.AutoField(primary_key=True)
