@@ -31,7 +31,7 @@ SECRET_KEY = 'tk2(l(00&kfe7j97j$dvgz&b6r!kk_zbse1(9w*eoc$bcwu773'
 ##########
 #Use True on your local PC, False on Heroku!!
 ########
-DEBUG = True
+DEBUG = False
 
 # DEBUG = False
 
@@ -72,7 +72,9 @@ ROOT_URLCONF = 'vsdk.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),
+                 os.path.join(BASE_DIR, 'auction/templates'),
+                 os.path.join(BASE_DIR, 'auction/templates/vxml')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
