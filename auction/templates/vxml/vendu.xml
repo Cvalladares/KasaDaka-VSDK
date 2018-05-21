@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <vxml version="2.1">
 	<!-- These are global variables that stores the user's buying choices-->
-	<var name="number_items"/>
-	<var name="price_paid"/>
+	<var name="auction_id" expr = "{{auction_id}}"/>
 	<!-- This is a global Variable that stores the user's phone info-->
-	<var name="session_info" expr="session"/>
+	<var name="owner" expr="session"/>
+	<!-- This is a global Variable that stores the user's selling options-->
+	<var name="product"/>
+
 
 	<!-- Fetch the information from the session and store it in a variable-->
 	<script>
-		session_info = session.connection.remote.uri
+		owner = session.connection.remote.uri
 	</script>
 	<!-- This is the initial menu that lets the user decide whether you want
 			to buy or sell-->
@@ -31,7 +33,7 @@
 	<!-- This is the initial form specifying how many goods are left to buy and prompts
 		  how many goods you want to buy-->
   <form id="buyform">
-	  <field name = "number_of_items" type="digits?minlength=1;maxlength=2">
+	  <field name = "quantity" type="digits?minlength=1;maxlength=2">
 			<!-- This is an open ended grammar to let the user specify how many items to buy
 				  Currently it is limited to up to 9 items and allows 0 as an input-->
 			<prompt>
@@ -64,7 +66,7 @@
 	<!-- Request the User to input how much to pay for the ammount of goods selected -->
     <form id="makeNewBid">
 		<!-- This grammar is limited from 0 to 9 -->
-	  <field name = "payment" type="digits?minlength=1;maxlength=2">
+	  <field name = "bid" type="digits?minlength=1;maxlength=2">
 
 			<prompt>
 				<!--How Much would you like to pay for these items? -->
@@ -93,9 +95,9 @@
 		</prompt>
 		
       </filled>  
-		<!-- TODO: "Submit the values entered as a post" -->
+		<!-- TODO: "Submit the BID values entered as a post" -->
 		<block>
-     		 <submit next="" enctype="multipart/form-data" method="post" namelist="session_info number_of_items payment"/>
+     		 <submit next="" enctype="multipart/form-data" method="post" namelist="owner quantity bid auction_id"/>
    		</block>
 
   </form>
@@ -104,12 +106,13 @@
   <form id="sellform">
 		<!-- This grammar uses dtmf and has 3 different choices only-->	
 		  <field name = "itemtosell">
+			<!-- TODO: Make dynamic database query for the items -->
 			<grammar xml:lang="en-US" root = "openDigitInput" mode="dtmf">
 			  <rule id="openDigitInput" scope="public" >
 					  <one-of>                      
-						  <item>1</item>                
-						  <item>2</item>                
-						  <item>3</item>                
+						<!-- Grammar will be generated to contain only up to the number of
+							 quieried form the database -->
+						{{item_indexes}}
 					  </one-of>                     
 			  </rule>           
 			</grammar>    
@@ -130,15 +133,7 @@
 	  <filled>   
 	  <!-- This section stores the user's item choice in a global variable to be 
 	  used in the final section-->
-		<if cond="itemtosell=='1'">
-			<assign name="theitem" expr="'Shea Nuts'" />
-		</if>
-		<if cond="itemtosell=='2'">
-			<assign name="theitem" expr="'Jars of Shea Butter'" />
-		</if>
-		<if cond="itemtosell=='3'">
-			<assign name="theitem" expr="'Jars of Honey'" />		
-		</if>
+		{{product_conditionals}}
 		
 		<goto next="#saleQuantity"/>	
 		
@@ -147,34 +142,52 @@
   
   <!-- Ask the user the quantity of items to sell-->
   <form id="saleQuantity">
-  		<field name = "numitems" type="digits?minlength=1;maxlength=2">
+  		<field name = "quantity" type="digits?minlength=1;maxlength=2">
 
+		<prompt>
+			<!-- How many? -->
+			<audio src="http://django-static.vps.abaart.nl/group10/django/HowMany.wav"/>
+		</prompt>
 
-			<prompt>
-				<!-- How many? -->
-				<audio src="http://django-static.vps.abaart.nl/group10/django/HowMany.wav"/>
-			</prompt>
-			
-            <noinput>
-				<reprompt/>
-            </noinput>
-            <nomatch>
-				<reprompt/>
-            </nomatch>
+		<noinput>
+			<reprompt/>
+		</noinput>
+		<nomatch>
+			<reprompt/>
+		</nomatch>
 		</field>
 		
 		<filled>
-			<prompt>
-				You have chosen to sell <value expr="numitems"/> of <value expr="theitem"/>.
-				We will call you when buyers want to buy your goods.
-			</prompt>
+			<goto next="#minPrice"/>
 		</filled>
   </form>
 
   <form id="minPrice">
-	  <field name = "minimumPrice" type="digits?minlength=1;maxlength=3">
-		  
+	  <field name = "starting_price" type="digits?minlength=1;maxlength=3">
+			<prompt>
+				<!-- How many? -->
+				<audio src="http://django-static.vps.abaart.nl/group10/django/minimum_price.wav"/>
+			</prompt>
 	  </field>
+
+	    <noinput>
+			<reprompt/>
+		</noinput>
+		<nomatch>
+			<reprompt/>
+		</nomatch>
+
+		<filled>
+			<prompt>
+				<audio src="http://django-static.vps.abaart.nl/group10/django/WeWillCallYouSELL.wav"/>
+			</prompt>
+		</filled>
+
+	  	<!--TODO: submit values sto the create auction endpoint-->
+		<block>
+     		 <submit next="" enctype="multipart/form-data" method="post" namelist="owner quantity product starting_price"/>
+   		</block>
+
   </form>
 
   <form id="hangupBid">
