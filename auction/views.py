@@ -60,11 +60,11 @@ def bid(request):
                                            'bids': bids,
                                            'current_price': get_current_price(current_auction.auction_start,
                                                                               current_auction.starting_price),
-                                           'products_left': get_products_left(current_auction)})
+                                           'products_left': get_products_left(current_auction)}, content_type='text/xml')
 
 
 def vxml(request):
-    template = loader.get_template('vxml/vendu.xml')
+    template = 'vxml/vendu.xml'
 
     ###################BIDDING LOGIC###############################
 
@@ -107,12 +107,12 @@ def vxml(request):
         product_audios.append(aProduct.audio_url)
         item_indexes.append('<item>{}</item>\n'.format(idx))
 
-    return render(request, template, {'auction_id': current_auction.auction_id,
+    return render(request=request, template_name=template, context = {'auction_id': current_auction.auction_id,
                                       'quantity_for_sale': quantity_for_sale,
                                       'item_on_schedule': item,
                                       'product_audios': product_audios,
                                       'product_conditionals': ''.join(product_conditionals),
-                                      'item_indexes': ''.join(item_indexes)})
+                                      'item_indexes': ''.join(item_indexes)}, content_type='text/xml')
 
 
 def add_new_product(request):
