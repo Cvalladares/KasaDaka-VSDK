@@ -55,8 +55,7 @@ def bid(request):
 
 	return render(request, template_name, {'auction': current_auction,
 										   'bids': bids,
-										   'current_price': get_current_price(current_auction.auction_start,
-																			  current_auction.starting_price),
+										   'current_price': get_current_price(current_auction.auction_start, current_auction.starting_price),
 										   'products_left': get_products_left(current_auction)})
 
 
@@ -130,11 +129,11 @@ def create_new_auction(request):
 	# start_time = datetime.datetime.today().replace(hour=11, minute=0, second=0, microsecond=0) + datetime.timedelta(days=1)
 
 	# if len(Auction.objects.all()):
-	# 	start = Auction.objects.latest('auction_start').auction_start
-	# 	start_time = start + datetime.timedelta(seconds=15*60)
+	#   start = Auction.objects.latest('auction_start').auction_start
+	#   start_time = start + datetime.timedelta(seconds=15*60)
 
-	# 	if datetime.datetime.now() >= Auction.objects.latest('auction_start').auction_start.replace(tzinfo=None):
-	# 		start_time = datetime.datetime.today().replace(hour=11, minute=0, second=0, microsecond=0) + datetime.timedelta(days=1)
+	#   if datetime.datetime.now() >= Auction.objects.latest('auction_start').auction_start.replace(tzinfo=None):
+	#       start_time = datetime.datetime.today().replace(hour=11, minute=0, second=0, microsecond=0) + datetime.timedelta(days=1)
 
 	# end_time = start_time + datetime.timedelta(seconds=15*60-1)
 
@@ -216,7 +215,7 @@ def get_current_price(start_time, start_price):
 	if time_interest < 0:
 		time_interest = 0
 
-		return start_price + time_interest
+	return start_price + time_interest
 
 def get_products_left(auction):
 	if auction is not None:
