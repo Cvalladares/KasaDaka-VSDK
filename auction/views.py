@@ -61,7 +61,7 @@ def bid(request):
 
 
 def vxml(request):
-    template = loader.get_template('vxml/default.xml')
+    template = 'vxml/vendu.xml'
 
     ###################BIDDING LOGIC###############################
 
