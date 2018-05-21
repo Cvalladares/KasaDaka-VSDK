@@ -223,10 +223,12 @@ def get_current_price(start_time, start_price):
 	return start_price + time_interest
 
 def get_products_left(auction):
-	bids = Bid.objects.filter(auction__auction_id=auction.auction_id)
+	if auction is not None:
+		bids = Bid.objects.filter(auction__auction_id=auction.auction_id)
 
-	total_order_size = 0
-	for bid in bids:
-		total_order_size += bid.quantity
+		total_order_size = 0
+		for bid in bids:
+			total_order_size += bid.quantity
 
-	return auction.quantity - total_order_size
+		return auction.quantity - total_order_size
+	return "-"
