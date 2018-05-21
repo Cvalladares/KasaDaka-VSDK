@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <vxml version="2.1">
-	<!-- This is a global Variable that stores the user's choice -->
-	<var name="theitem"/>
-	
+	<!-- These are global variables that stores the user's buying choices-->
+	<var name="number_items"/>
+	<var name="price_paid"/>
+	<!-- This is a global Variable that stores the user's phone info-->
+	<var name="session_info" expr="session"/>
+
+	<!-- Fetch the information from the session and store it in a variable-->
+	<script>
+		session_info = session.connection.remote.uri
+	</script>
 	<!-- This is the initial menu that lets the user decide whether you want
 			to buy or sell-->
   <menu id="menu1" dtmf="true">
@@ -24,7 +31,7 @@
 	<!-- This is the initial form specifying how many goods are left to buy and prompts
 		  how many goods you want to buy-->
   <form id="buyform">
-	  <field name = "numberofitems" type="digits?minlength=1;maxlength=2">
+	  <field name = "number_of_items" type="digits?minlength=1;maxlength=2">
 			<!-- This is an open ended grammar to let the user specify how many items to buy
 				  Currently it is limited to up to 9 items and allows 0 as an input-->
 			<prompt>
@@ -58,47 +65,38 @@
     <form id="makeNewBid">
 		<!-- This grammar is limited from 0 to 9 -->
 	  <field name = "payment" type="digits?minlength=1;maxlength=2">
-			<grammar xml:lang="en-US" root = "openDigitInput" mode="dtmf">
-			  <rule id="openDigitInput" scope="public" >
-					  <one-of>                      
-						  <item>1</item>                
-						  <item>2</item>                
-						  <item>3</item>                
-						  <item>4</item>                
-						  <item>5</item>                
-						  <item>6</item>                
-						  <item>7</item>
-						  <item>8</item>                
-						  <item>9</item>                
-						  <item>0</item>                
-					  </one-of>                     
-			  </rule>           
-			</grammar>    
-			
+
 			<prompt>
-				How Much would you like to pay for these items?
+				<!--How Much would you like to pay for these items? -->
+				<audio src="http://django-static.vps.abaart.nl/group10/django/HowMuchWouldYouLikeToPay.wav"/>
 			</prompt>		
 			
-			<nomatch>
-			 <prompt>
-			 Please enter your number again.
-			 </prompt>
-			 <reprompt/>
-			</nomatch>
+            <noinput>
+				<reprompt/>
+            </noinput>
+            <nomatch>
+				<reprompt/>
+            </nomatch>
 	  </field>
 			
 	<!--Confirm the User's choice and instruct them about further steps-->	
 	  <filled>          
+
+		<!-- TODO: "You have chosen to pay X Zedi" -->
+		<!-- TODO: "Paying at least the base ammount"-->
 		<prompt>
-			You have chosen to pay  <break size="small"/><value expr="payment"/> <break size="small"/>Zedi.		
-		</prompt>
-		<prompt>
-			We will call you to let you know<break size="small"/> if you have won this bid <break size="small"/>
-			or if somebody is paying more than you. <break size="medium"/>Goodbye
+			<!--We will call you to let you know if you have won this bid or
+			if somebody is paying more than you. Goodbye-->
+			<audio src="http://django-static.vps.abaart.nl/group10/django/WeWillCallYouBID.wav"/>
+
+
 		</prompt>
 		
       </filled>  
-
+		<!-- TODO: "Submit the values entered as a post" -->
+		<block>
+     		 <submit next="" enctype="multipart/form-data" method="post" namelist="session_info number_of_items payment"/>
+   		</block>
 
   </form>
   
@@ -117,16 +115,16 @@
 			</grammar>    
 			
 			<prompt>
-				What are you trying to sell? Press 1 for Shea nuts.  Press 2 for Shea Butter.  Press 3 for Honey.
+				<!--You have chosen to sell-->
+				<audio src="http://django-static.vps.abaart.nl/group10/django/YouHaveChosenToSell.wav"/>
+				<!--What are you Trying to sell? Press 1 for shea nuts, press 2 for shea butter, or press 3 for honey-->
+				<audio src="http://django-static.vps.abaart.nl/group10/django/WhatAreYouTryingToSell.wav"/>
+
 			</prompt>					
 			
-			<nomatch>
-			 <prompt>
-				Press 1 for Shea nuts.  Press 2 for Shea Butter.  Press 3 for Honey.
-			 </prompt>
-			 <reprompt/>
-			</nomatch>
-			
+            <nomatch>
+				<reprompt/>
+            </nomatch>
 		</field>
 		
 	  <filled>   
@@ -149,34 +147,20 @@
   
   <!-- Ask the user the quantity of items to sell-->
   <form id="saleQuantity">
-  		<field name = "numitems">
-			<grammar xml:lang="en-US" root = "openDigitInput" mode="dtmf">
-			  <rule id="openDigitInput" scope="public" >
-					  <one-of>                      
-						  <item>1</item>                
-						  <item>2</item>                
-						  <item>3</item>                
-						  <item>4</item>                
-						  <item>5</item>                
-						  <item>6</item>                
-						  <item>7</item>
-						  <item>8</item>                
-						  <item>9</item>                
-						  <item>0</item>                
-					  </one-of>                     
-			  </rule>           
-			</grammar>
+  		<field name = "numitems" type="digits?minlength=1;maxlength=2">
+
 
 			<prompt>
-				You have chosen to sell <break size="small"/> <value expr="theitem"/>.  How many <value expr="theitem"/> do you want to sell?
+				<!-- How many? -->
+				<audio src="http://django-static.vps.abaart.nl/group10/django/HowMany.wav"/>
 			</prompt>
 			
-			<nomatch>
-			 <prompt>
-			 Please enter your number again.
-			 </prompt>
-			 <reprompt/>
-			</nomatch>
+            <noinput>
+				<reprompt/>
+            </noinput>
+            <nomatch>
+				<reprompt/>
+            </nomatch>
 		</field>
 		
 		<filled>
@@ -186,7 +170,12 @@
 			</prompt>
 		</filled>
   </form>
-  
+
+  <form id="minPrice">
+	  <field name = "minimumPrice" type="digits?minlength=1;maxlength=3">
+		  
+	  </field>
+  </form>
 
   <form id="hangupBid">
 		
