@@ -16,18 +16,18 @@
 							<th scope="col">Scheduled start</th>
 							<th scope="col">Scheduled end</th>
 							<th scope="col">Amount</th>
-							<th scope="col">Current highest bid</th>
+							<th scope="col">Products left</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td>{{ current_auction.auction_id }}</td>
+							<td>{{ current_auction.phone_number }}</td>
 							<td>{{ current_auction.product.product_name }}</td>
 							<td>{{ current_auction.starting_price }}</td>
 							<td>{{ current_auction.auction_start }}</td>
 							<td>{{ current_auction.auction_end }}</td>
 							<td>{{ current_auction.quantity }}</td>
-							<td></td>
+							<td>{{ products_left }}</td>
 						</tr>
 					</tbody>
 				</table>
@@ -40,6 +40,13 @@
 			<h1>New auction</h1>
 			<form action="{% url 'auction:create_new_auction' %}" method="POST">
 				{% csrf_token %}
+				
+				<div class="form-group">
+					<label for="phone_number">Phone number</label>
+					<input type="text" class="form-control" name="phone_number" aria-describedby="phone_number_help" placeholder="0612345678">
+					<small id="phone_number_help" class="form-text text-muted">Enter your phone number.</small>
+				</div>
+
 				<div class="form-group">
 					<label for="product">Select your product</label>
 					<select class="form-control" id="product" name="product">

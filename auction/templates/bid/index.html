@@ -19,12 +19,12 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td>{{ auction.auction_id }}</td>
+						<td>{{ auction.phone_number }}</td>
 						<td>{{ auction.product.product_name }}</td>
 						<td>{{ auction.starting_price }}</td>
 						<td>{{ auction.auction_start }}</td>
 						<td>{{ auction.auction_end }}</td>
-						<td>{{ auction.quantity }}</td>
+						<td>{{ products_left }}</td>
 						<td>{{ current_price }}</td>
 					</tr>
 				</tbody>
@@ -62,9 +62,9 @@
 						<div class="form-group">
 							<label for="bid">Price</label>
 							{% if bid %}
-							<input type="text" class="form-control" name="bid" aria-describedby="bid_help" placeholder="0.00" value={{ bid }}>
+							<input type="text" class="form-control" name="bid" aria-describedby="bid_help" placeholder={{ current_price }} value={{ bid }}>
 							{% else %}
-							<input type="text" class="form-control" name="bid" aria-describedby="bid_help" placeholder="0.00" value="">
+							<input type="text" class="form-control" name="bid" aria-describedby="bid_help" placeholder={{ current_price }} value="">
 							{% endif%}
 							<small id="bid_help" class="form-text text-muted">Enter bid price</small>
 						</div>
