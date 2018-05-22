@@ -49,6 +49,7 @@
 				<!-- You chose to buy. At the moment we have a total of.. -->
 				<audio src="http://django-static.vps.abaart.nl/group10/django/YouChoseToBuy.wav"/>
 				<!-- NUMBER-->
+
 				<audio src="{{ quantity_for_sale }}"/>
                 <!--Item for sale-->
                 <audio src="{{ item_on_schedule }}"/>

@@ -76,12 +76,16 @@ def vxml(request):
 
     # Generate the URL for the Wav file.  All wave files must be named as <number>_en.wav in
     #   order for this to work
+
     quantity_for_sale = '{}{}{}'.format('http://django-static.vps.abaart.nl/group10/django/',
                                         get_products_left(current_auction),
                                         '_en.wav')
 
-    item = None
-    auction_id = None
+    if quantity_for_sale is None:
+        quantity_for_sale=0
+
+    item = 0
+    auction_id = 0
 
     if not current_auction is None:
         item = current_auction.product.audio_url
@@ -126,7 +130,7 @@ def vxml(request):
     return render(request=request, template_name=template, context={    'auction_id': None,
                                                                         'quantity_for_sale': quantity_for_sale,
                                                                         'item_on_schedule': item,
-                                                                        'product_audios': product_audios,
+                                                                        'product_audios': None,
                                                                         'product_conditionals': product_conditionals,
                                                                         'item_indexes': item_indexes, 'callerid': callerid
                                                                         }, content_type='text/xml')
