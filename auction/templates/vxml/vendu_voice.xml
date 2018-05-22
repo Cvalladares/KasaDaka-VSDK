@@ -21,12 +21,17 @@
 
 {% if auction %}
 <form id="buyform">
-		<field name="quantity" type="digits">
-			<prompt>We are currently selling {{ auction.product.product_name }}. The seller has {{ products_left }} of the product available. How many jars would you like?</prompt>	
+		<block>
+			We are currently selling {{ auction.product.product_name }}. The seller has {{ products_left }} of the product available.
+		</block>
+		<field name="quantity">
+			<prompt>
+				How many jars would you like?
+			</prompt>	
 		</field>
 		<block>
 			Thank you, your bid has been placed.
-			<submit next="{% url 'auction:place_voice_bid' %}" method="POST" enctype="multipart/form-data" namelist="quantity" ></submit>
+			<submit next="{% url 'auction:place_voice_bid' %}" method="POST" enctype="multipart/form-data" namelist="quantity"></submit>
 		</block>
 </form>
 {% else %}
