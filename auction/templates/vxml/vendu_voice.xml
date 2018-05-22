@@ -22,6 +22,7 @@
 {% if auction %}
 <form id="buyform">
 	<field name="amount" type="digits?minlength=1;maxlength=2">
+		<prompt>How much would you like to buy?</prompt>
 		<grammar version="1.0" xml:lang="en-US" root="keypress" mode="dtmf" scope="document">
 			<rule id="keypress" scope = "public">
 				<one-of>
@@ -38,7 +39,6 @@
 				</one-of>
 			</rule>
 		</grammar>
-		<prompt>How much would you like to buy?</prompt>
 	</field>
 </form>
 {% else %}
