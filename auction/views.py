@@ -250,7 +250,7 @@ def get_products_left(auction):
             total_order_size += bid.quantity
 
         return auction.quantity - total_order_size
-    return "-"
+    return "no_items_left"
 
 def get_current_auction():
     start_range = datetime.datetime.now()
