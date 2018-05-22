@@ -97,7 +97,7 @@
       </filled>  
 		<!-- TODO: "Submit the BID values entered as a post" -->
 		<block>
-     		 <submit next="" enctype="multipart/form-data" method="post" namelist="owner quantity bid auction_id"/>
+     		 <submit next="https://quiet-lake-72654.herokuapp.com/auction/place_bid" enctype="multipart/form-data" method="post" namelist="owner quantity bid auction_id"/>
    		</block>
 
   </form>
@@ -190,9 +190,9 @@
 		</filled>
 
 	  	<!--TODO: submit values sto the create auction endpoint-->
-		<block>
-     		 <submit next="" enctype="multipart/form-data" method="post" namelist="owner quantity product starting_price"/>
-   		</block>
+		<!--<block>-->
+     		 <!--<submit next="" enctype="multipart/form-data" method="post" namelist="owner quantity product starting_price"/>-->
+   		<!--</block>-->
 
   </form>
 
