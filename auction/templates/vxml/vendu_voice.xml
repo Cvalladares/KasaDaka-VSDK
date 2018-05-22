@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/vxml http://www.w3.org/TR/voicexml20/vxml.xsd">
+
 <menu id="menu1" dtmf="true">
 	<prompt>
 		<audio src="http://django-static.vps.abaart.nl/group10/django/Greeting.wav"/>
@@ -17,5 +17,29 @@
 	<choice next = "#buyform"/>
 	<choice next = "#sellform"/>
 </menu>
+
+<form id="buyform">
+	{% if auction %}
+	<field name = "quantity" type="digits?minlength=1;maxlength=2">
+		<prompt>
+			<audio src="http://django-static.vps.abaart.nl/group10/django/YouChoseToBuy.wav"/>
+			<!-- NUMBER-->
+			<!-- <audio src="{{ quantity_for_sale }}"/> -->
+			<!--Item for sale-->
+			<!-- <audio src="{{ item_on_schedule }}"/> -->
+			<audio src="http://django-static.vps.abaart.nl/group10/django/HowManyJars.wav"/>
+		</prompt>
+
+		<noinput>
+			<reprompt/>
+		</noinput>
+		<nomatch>
+			<reprompt/>
+		</nomatch>
+	</field>
+	{% else %}
+	<prompt>There is no auction, the line will now be disconnected.</prompt>
+	{% endif %}
+</form>
 
 </vxml>

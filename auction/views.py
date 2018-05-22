@@ -113,8 +113,10 @@ def vxml(request):
 def voice(request):
     template_name = 'vxml/vendu_voice.xml'
     caller = request.GET.get('callerid')
+    current_auction = get_current_auction()
     print("Caller: {}".format(caller))
-    return render(request, template_name, {}, content_type="text/xml")
+
+    return render(request, template_name, {'auction': current_auction}, content_type="text/xml")
 
 def add_new_product(request):
     new_product = Product()
@@ -238,3 +240,14 @@ def get_products_left(auction):
 
         return auction.quantity - total_order_size
     return "-"
+
+def get_current_auction():
+    start_range = datetime.datetime.now()
+    end_range = start_range + datetime.timedelta(days=6)
+
+    auctions = Auction.objects.filter(auction_end__range=[start_range, end_range])
+    current_auction = None
+    for auction in auctions:
+        if auction.auction_start.replace() <= datetime.datetime.now() <= auction.auction_end:
+            current_auction = auction
+    return current_auction
