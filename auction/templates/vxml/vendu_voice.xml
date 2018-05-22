@@ -2,6 +2,24 @@
 
 <vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/vxml http://www.w3.org/TR/voicexml20/vxml.xsd">
 
+<grammar version="1.0" xml:lang="en-US" root="keypress" 
+         mode="dtmf" scope="document">
+    <rule id="keypress" scope = "public">
+      <one-of>
+          <item> 1 </item>
+          <item> 2 </item>
+          <item> 3 </item>
+          <item> 4 </item>
+          <item> 5 </item>
+          <item> 6 </item>
+          <item> 7 </item>
+          <item> 8 </item>
+          <item> 9 </item>
+          <item> 0 </item>
+      </one-of>
+    </rule>
+</grammar>
+
 <menu id="menu1" dtmf="true">
 	<prompt>
 		<audio src="http://django-static.vps.abaart.nl/group10/django/Greeting.wav"/>
@@ -21,7 +39,7 @@
 
 {% if auction %}
 <form id="buyform">
-	<field name="amount" type="digits">
+	<field name="amount" type="digits?minlength=1;maxlength=2">
 		<prompt>How much would you like to buy?</prompt>
 	</field>
 </form>
