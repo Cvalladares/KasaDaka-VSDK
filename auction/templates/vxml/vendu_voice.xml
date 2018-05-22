@@ -14,9 +14,24 @@
 		<audio src="http://django-static.vps.abaart.nl/group10/django/2_en.wav"/>
 	</prompt>
 
-	<choice next = "#buyform"/>
-	<choice next = "#sellform"/>
+	<choice next="#buyform"/>
+	<choice next="#sellform"/>
 </menu>
 
+{% if auction %}
+<form id="buyform">
+	<field name = "quantity" type="digits?minlength=1;maxlength=2">
+		<prompt>
+			<audio src="http://django-static.vps.abaart.nl/group10/django/YouChoseToBuy.wav"/>
+			<!-- NUMBER-->
+			<!--Item for sale-->
+			<!--How many jars would you like to buy-->
+			<audio src="http://django-static.vps.abaart.nl/group10/django/HowManyJars.wav"/>
+		</prompt>
+	</field>
+</form>
+{% else %}
+<prompt id="buyform">There currently is no auction taking place. You will be disconnected. </prompt>
+{% endif %}
 
 </vxml>
