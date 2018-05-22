@@ -198,7 +198,7 @@
 
 	  	<!--TODO: submit values sto the create auction endpoint-->
 		<block>
-     		 <submit next="https://quiet-lake-72654.herokuapp.com/auction/create_new_auction_now" enctype="multipart/form-data" method="post" namelist=" quantity product starting_price"/>
+     		 <submit next="https://quiet-lake-72654.herokuapp.com/auction/new_auction" enctype="multipart/form-data" method="post" namelist=" quantity product starting_price"/>
    		</block>
 
   </form>
