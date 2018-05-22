@@ -22,7 +22,7 @@
 {% if auction %}
 <form id="buyform">
 	<block>
-		<field name="quantity" type="digits?minlength=1;maxlength=2">
+		<field name="quantity" type="digits">
 			<prompt>We are currently selling {{ auction.product.product_name }}. The seller has {{ products_left }} of the product available.</prompt>	
 			<audio src="http://django-static.vps.abaart.nl/group10/django/HowManyJars.wav"/>
 
