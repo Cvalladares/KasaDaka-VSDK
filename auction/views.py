@@ -114,13 +114,22 @@ def vxml(request):
         product_audios.append([idx,aProduct.audio_url])
         item_indexes.append(idx)
 
+    if not current_auction is None:
+        return render(request=request, template_name=template, context={
+                                                                        'quantity_for_sale': quantity_for_sale,
+                                                                        'item_on_schedule': item,
+                                                                        'product_audios': product_audios,
+                                                                        'product_conditionals': product_conditionals,
+                                                                        'item_indexes': item_indexes, 'callerid': callerid
+                                                                        }, content_type='text/xml')
+
     return render(request=request, template_name=template, context={'auction_id': current_auction.auction_id,
-                                                                    'quantity_for_sale': quantity_for_sale,
-                                                                    'item_on_schedule': item,
-                                                                    'product_audios': product_audios,
-                                                                    'product_conditionals': product_conditionals,
-                                                                    'item_indexes': item_indexes, 'callerid': callerid
-                                                                    }, content_type='text/xml')
+                                                                        'quantity_for_sale': quantity_for_sale,
+                                                                        'item_on_schedule': item,
+                                                                        'product_audios': product_audios,
+                                                                        'product_conditionals': product_conditionals,
+                                                                        'item_indexes': item_indexes, 'callerid': callerid
+                                                                        }, content_type='text/xml')
 
 
 def voice(request):
