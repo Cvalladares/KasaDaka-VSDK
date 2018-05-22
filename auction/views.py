@@ -58,41 +58,20 @@ def bid(request):
                                                                               current_auction.starting_price),
                                            'products_left': get_products_left(current_auction)})
 
-
 def vxml(request):
     template = 'vxml/vendu.xml'
     callerid = request.GET.get('callerid')
-    ###################BIDDING LOGIC###############################
 
-    # Fetch acutions
-    start_range = datetime.datetime.now()
-    end_range = start_range + datetime.timedelta(days=6)
-    auctions = Auction.objects.filter(auction_end__range=[start_range, end_range])
-
-    current_auction = None
-    for auction in auctions:
-        if auction.auction_start.replace() <= datetime.datetime.now() <= auction.auction_end:
-            current_auction = auction
-
-    # Generate the URL for the Wav file.  All wave files must be named as <number>_en.wav in
-    #   order for this to work
-    quantity_for_sale = '{}{}{}'.format('http://django-static.vps.abaart.nl/group10/django/',
-                                        get_products_left(current_auction),
-                                        '_en.wav')
-
-    item = None
+    current_auction = get_current_auction()
     auction_id = None
+    item = None
+    quantity_for_sale = None
 
     if not current_auction is None:
         item = current_auction.product.audio_url
         auction_id = current_auction.auction_id
+        quantity_for_sale = 'http://django-static.vps.abaart.nl/group10/django/{}_en.wav'.format(get_products_left(current_auction))
 
-
-    ###################SELLING LOGIC###############################
-
-    # TODO: Find a better way to determine a limit on the products that can be sold
-    # Get top 5 products for sale or up to the number of products in the databasse,
-    #   whichever is smallest
     products = Product.objects.all()
 
     # Lists containing voiceXML components to be added dynamically to the VoiceXML
@@ -100,36 +79,18 @@ def vxml(request):
     product_conditionals = list()
     item_indexes = list()
 
-
-    # for idx, aProduct in enumerate(products):
-    #     # Generate a list of conditionals to determine which items were selected
-    #     #   by the user
-    #     # Generate a list of audio_urls for the product
-    #     product_conditionals.append([idx, aProduct.product_id])
-    #     product_audios.append([idx,aProduct.audio_url])
-    #     item_indexes.append(idx)
-
     for product in products:
         product_conditionals.append([product.product_id, product.product_id])
         product_audios.append([product.product_id, product.audio_url])
         item_indexes.append(product.product_id)
 
-    if not current_auction is None:
-        return render(request=request, template_name=template, context={'auction_id': current_auction.auction_id,
-                                                                        'quantity_for_sale': quantity_for_sale,
-                                                                        'item_on_schedule': item,
-                                                                        'product_audios': product_audios,
-                                                                        'product_conditionals': product_conditionals,
-                                                                        'item_indexes': item_indexes, 'callerid': callerid
-                                                                        }, content_type='text/xml')
-
-    return render(request=request, template_name=template, context={    'auction_id': None,
-                                                                        'quantity_for_sale': quantity_for_sale,
-                                                                        'item_on_schedule': item,
-                                                                        'product_audios': product_audios,
-                                                                        'product_conditionals': product_conditionals,
-                                                                        'item_indexes': item_indexes, 'callerid': callerid
-                                                                        }, content_type='text/xml')
+    return render(request=request, template_name=template, context={'auction_id': auction_id, 
+        'quantity_for_sale': quantity_for_sale,
+        'item_on_schedule': item,
+        'product_audios': product_audios,
+        'product_conditionals': product_conditionals,
+        'item_indexes': item_indexes,
+        'callerid': callerid}, content_type='text/xml')
 
 def voice(request):
     template_name = 'vxml/vendu_voice.xml'
