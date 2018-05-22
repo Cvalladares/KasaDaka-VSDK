@@ -59,7 +59,7 @@ def bid(request):
 
                                            'current_price': get_current_price(current_auction.auction_start,
                                                                               current_auction.starting_price),
-                                           'products_left': get_products_left(current_auction)}, content_type='text/xml')
+                                           'products_left': get_products_left(current_auction)})
 
 
 def vxml(request):
