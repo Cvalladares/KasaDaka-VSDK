@@ -112,16 +112,16 @@ def vxml(request):
     #     product_conditionals.append([idx, aProduct.product_id])
     #     product_audios.append([idx,aProduct.audio_url])
     #     item_indexes.append(idx)
+    if current_auction is None:
+        product_conditionals.append([0, 0])
+        product_audios.append('http://django-static.vps.abaart.nl/group10/django/no_sale.wav')
+        item_indexes.append(0)
 
     for product in products:
         product_conditionals.append([product.product_id, product.product_id])
         product_audios.append([product.product_id, product.audio_url])
         item_indexes.append(product.product_id)
 
-    if not products:
-        product_conditionals.append([0, 0])
-        product_audios.append('http://django-static.vps.abaart.nl/group10/django/pre_choice_option_en.wav')
-        item_indexes.append(0)
 
     if not current_auction is None:
         return render(request=request, template_name=template, context={'auction_id': current_auction.auction_id,
