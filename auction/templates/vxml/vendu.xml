@@ -35,7 +35,7 @@
    </prompt>
 	{% if auction_id %}
   		 <choice next = "#buyform"/>
-  {% endif %>
+  	{% endif %}
    <choice next = "#sellform"/>
   </menu>
  
