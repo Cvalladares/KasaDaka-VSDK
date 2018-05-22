@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<vxml version="2.1">
+<!--- <vxml version = "2.1" > -->
+<!DOCTYPE vxml SYSTEM "http://www.w3.org/TR/voicexml21/vxml.dtd">
+<vxml xmlns="http://www.w3.org/2001/vxml"
+  version="2.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.w3.org/2001/vxml
+  http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.xsd">
+<property name="inputmodes" value="dtmf" />
+
+
 	<!-- These are global variables that stores the user's buying choices-->
 	<var name="auction_id" expr = "{{auction_id}}"/>
 	<var name="quantity" expr = "0"/>
@@ -85,14 +94,6 @@
 			<!--We will call you to let you know if you have won this bid or
 			if somebody is paying more than you. Goodbye-->
 			<audio src="http://django-static.vps.abaart.nl/group10/django/WeWillCallYouBID.wav"/>
-			owner is
-			<value expr = "owner"/>
-			quantity is
-			<value expr = "quantity"/>
-			bid is
-			<value expr = "bid"/>
-			auction_id is
-			<value expr="auction_id"/>
 		</prompt>
 		
       </filled>  
