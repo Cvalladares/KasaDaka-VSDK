@@ -20,18 +20,16 @@
 
 {% if auction %}
 <form id="buyform">
-	<field name = "quantity" type="digits?minlength=1;maxlength=2">
-		<prompt>
-			<audio src="http://django-static.vps.abaart.nl/group10/django/YouChoseToBuy.wav"/>
-			<!-- NUMBER-->
-			<!--Item for sale-->
-			<!--How many jars would you like to buy-->
-			<audio src="http://django-static.vps.abaart.nl/group10/django/HowManyJars.wav"/>
-		</prompt>
-	</field>
+	<block>
+		<prompt>There currently is no auction taking place. You will be disconnected. </prompt>		
+	</block>
 </form>
 {% else %}
-<prompt id="buyform">There currently is no auction taking place. You will be disconnected. </prompt>
+<form id="buyform">
+	<block>
+		<prompt>There currently is no auction taking place. You will be disconnected. </prompt>		
+	</block>
+</form>
 {% endif %}
 
 </vxml>
