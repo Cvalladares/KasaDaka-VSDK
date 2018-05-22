@@ -40,6 +40,9 @@
 			</rule>
 		</grammar>
 	</field>
+	<block>
+		Thank you for your order.
+	</block>
 </form>
 {% else %}
 <form id="buyform">
