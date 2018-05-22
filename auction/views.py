@@ -114,9 +114,9 @@ def voice(request):
     template_name = 'vxml/vendu_voice.xml'
     caller = request.GET.get('callerid')
     current_auction = get_current_auction()
-    print("Caller: {}".format(caller))
-
-    return render(request, template_name, {'auction': current_auction}, content_type="text/xml")
+    products_left = get_products_left(current_auction)
+    # print("Caller: {}".format(caller))
+    return render(request, template_name, {'auction': current_auction, 'products_left': products_left, 'caller': caller}, content_type="text/xml")
 
 def add_new_product(request):
     new_product = Product()
