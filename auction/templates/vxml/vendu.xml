@@ -146,7 +146,6 @@
 			<assign name="product" expr="{{product_id}}" />
 		</if>
 		{% endfor %}
-
 		<goto next="#saleQuantity"/>	
 		
       </filled>  

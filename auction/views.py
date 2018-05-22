@@ -24,10 +24,8 @@ def index(request):
     for auction in auctions:
         if auction.auction_start.replace() <= datetime.datetime.now() <= auction.auction_end:
             current_auction = auction
-
-    return render(request, template_name,
-                  {'products': products, 'auctions': auctions, 'current_auction': current_auction,
-                   'products_left': get_products_left(current_auction)})
+    
+    return render(request, template_name, {'products': products, 'auctions': auctions, 'current_auction': current_auction, 'products_left': get_products_left(current_auction)})
 
 
 def product(request):
@@ -58,6 +56,15 @@ def bid(request):
 
     return render(request, template_name, {'auction': current_auction,
                                            'bids': bids,
+<<<<<<< HEAD
+                                           'current_price': get_current_price(current_auction.auction_start, current_auction.starting_price),
+                                           'products_left': get_products_left(current_auction)})
+
+
+def vxml(request):
+    template = loader.get_template('vxml/default.xml')
+    template = 'vxml/default.xml'
+=======
                                            'current_price': get_current_price(current_auction.auction_start,
                                                                               current_auction.starting_price),
                                            'products_left': get_products_left(current_auction)}, content_type='text/xml')
@@ -65,6 +72,7 @@ def bid(request):
 
 def vxml(request):
     template = 'vxml/vendu.xml'
+>>>>>>> 99b8c1b9326c6a3fc349c1f1cec654141bd62140
 
     ###################BIDDING LOGIC###############################
 
@@ -100,6 +108,10 @@ def vxml(request):
     for idx, aProduct in enumerate(products):
         # Generate a list of conditionals to determine which items were selected
         #   by the user
+<<<<<<< HEAD
+        product_conditionals.append('<if cond="itemtosell==\'{}\'"><assign name="product" expr=\"\'{}\'\" /></if>\n'.format(idx, aProduct.product_id))
+=======
+>>>>>>> 99b8c1b9326c6a3fc349c1f1cec654141bd62140
         # Generate a list of audio_urls for the product
         product_conditionals.append([idx, aProduct.product_id])
         product_audios.append([idx,aProduct.audio_url])
@@ -109,9 +121,21 @@ def vxml(request):
                                       'quantity_for_sale': quantity_for_sale,
                                       'item_on_schedule': item,
                                       'product_audios': product_audios,
+<<<<<<< HEAD
+                                      'product_conditionals': ''.join(product_conditionals),
+                                      'item_indexes': ''.join(item_indexes)}, content_type='text/xml')
+=======
                                       'product_conditionals': product_conditionals,
                                       'item_indexes': item_indexes}, content_type='text/xml')
+>>>>>>> 99b8c1b9326c6a3fc349c1f1cec654141bd62140
 
+def voice(request):
+    template_name = 'vxml/vendu_voice.xml'
+    caller = request.GET.get('callerid')
+    current_auction = get_current_auction()
+    products_left = get_products_left(current_auction)
+    # print("Caller: {}".format(caller))
+    return render(request, template_name, {'auction': current_auction, 'products_left': products_left, 'caller': caller}, content_type="text/xml")
 
 def add_new_product(request):
     new_product = Product()
@@ -121,7 +145,6 @@ def add_new_product(request):
     new_product.save()
 
     return HttpResponseRedirect("/auction/product")
-
 
 def create_new_auction(request):
     create_new_auction_now(request)
@@ -205,6 +228,20 @@ def place_bid(request):
 
     return HttpResponseRedirect("/auction/bid")
 
+def place_voice_bid(request):
+    owner = "Christian"
+    bid = "30"
+    my_request = request.POST['quantity']
+
+    new_bid = Bid()
+    new_bid.auction = get_current_auction()
+    new_bid.owner = owner
+    new_bid.bid = bid
+    new_bid.quantity = request.POST['quantity']
+    new_bid.creation_date = timezone.now()
+    new_bid.save()
+
+    print("bid has been saved")
 
 # Helper methods
 def get_current_price(start_time, start_price):
@@ -217,7 +254,6 @@ def get_current_price(start_time, start_price):
 
     return start_price + time_interest
 
-
 def get_products_left(auction):
     if auction is not None:
         bids = Bid.objects.filter(auction__auction_id=auction.auction_id)
@@ -228,3 +264,14 @@ def get_products_left(auction):
 
         return auction.quantity - total_order_size
     return "-"
+
+def get_current_auction():
+    start_range = datetime.datetime.now()
+    end_range = start_range + datetime.timedelta(days=6)
+
+    auctions = Auction.objects.filter(auction_end__range=[start_range, end_range])
+    current_auction = None
+    for auction in auctions:
+        if auction.auction_start.replace() <= datetime.datetime.now() <= auction.auction_end:
+            current_auction = auction
+    return current_auction
