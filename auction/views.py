@@ -111,7 +111,6 @@ def vxml(request):
                                       'quantity_for_sale': quantity_for_sale,
                                       'item_on_schedule': item,
                                       'product_audios': product_audios,
-
                                       'product_conditionals': product_conditionals,
                                       'item_indexes': item_indexes}, content_type='text/xml')
 
@@ -217,11 +216,11 @@ def place_bid(request):
 
 def place_voice_bid(request):
     owner = "Christian"
-    bid = "30"
+    bid = request.POST['bid']
     my_request = request.POST['quantity']
 
     new_bid = Bid()
-    new_bid.auction = get_current_auction()
+    new_bid.auction = request.POST['auction_id']
     new_bid.owner = owner
     new_bid.bid = bid
     new_bid.quantity = request.POST['quantity']
