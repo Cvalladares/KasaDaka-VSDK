@@ -83,8 +83,15 @@ def vxml(request):
     quantity_for_sale = '{}{}{}'.format('http://django-static.vps.abaart.nl/group10/django/',
                                         get_products_left(current_auction),
                                         '_en.wav')
-    item = current_auction.product.audio_url
-    auction_id = current_auction.auction_id
+
+    item = None
+    auction_id = None
+
+    if not current_auction is None:
+        item = current_auction.product.audio_url
+        auction_id = current_auction.auction_id
+
+
     ###################SELLING LOGIC###############################
 
     # TODO: Find a better way to determine a limit on the products that can be sold

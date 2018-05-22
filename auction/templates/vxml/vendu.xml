@@ -33,7 +33,9 @@
    <prompt>
 		<audio src="http://django-static.vps.abaart.nl/group10/django/Full_Greeting.wav"/>
    </prompt>
-   <choice next = "#buyform"/>
+	{% if auction_id %}
+  		 <choice next = "#buyform"/>
+  {% endif %>
    <choice next = "#sellform"/>
   </menu>
  
