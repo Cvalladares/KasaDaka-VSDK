@@ -55,7 +55,7 @@ def bid(request):
     return render(request, template_name, {'auction': current_auction,
                                            'bids': bids,
                                            'current_price': get_current_price(current_auction.auction_start, current_auction.starting_price),
-                                           'products_left': get_products_left(current_auction)}, content_type='text/xml')
+                                           'products_left': get_products_left(current_auction)})
 
 def vxml(request):
     template = 'vxml/vendu.xml'
@@ -219,6 +219,7 @@ def place_voice_bid(request):
     new_bid.save()
 
     print("bid has been saved")
+    return HttpResponseRedirect("/auction/bid")
 
 # Helper methods
 def get_current_price(start_time, start_price):
