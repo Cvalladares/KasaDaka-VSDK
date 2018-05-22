@@ -62,6 +62,9 @@ def vxml(request):
     template = 'vxml/vendu.xml'
     callerid = request.GET.get('callerid')
 
+    if callerid is None:
+        callerid = "Voxeo"
+
     current_auction = get_current_auction()
     auction_id = None
     item = None
@@ -84,7 +87,8 @@ def vxml(request):
         product_audios.append([product.product_id, product.audio_url])
         item_indexes.append(product.product_id)
 
-    return render(request=request, template_name=template, context={'auction_id': auction_id, 
+    return render(request=request, template_name=template, context={
+        'auction_id': auction_id, 
         'quantity_for_sale': quantity_for_sale,
         'item_on_schedule': item,
         'product_audios': product_audios,
