@@ -1,10 +1,11 @@
+
 from django.urls import path
 
 from . import views
 
 app_name = 'auction'
 urlpatterns = [
-    path('', views.index, name='index'),
+	path('', views.index, name='index'),
     path('product', views.product, name='product'),
     path('bid', views.bid, name='bid'),
     path('vxml', views.vxml, name='vxml'),

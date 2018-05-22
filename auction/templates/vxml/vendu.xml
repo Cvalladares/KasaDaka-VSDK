@@ -112,7 +112,9 @@
 					  <one-of>                      
 						<!-- Grammar will be generated to contain only up to the number of
 							 quieried form the database -->
-						{{item_indexes}}
+						{% for idx in item_indexes %}
+						  <item>{{idx}}</item>
+						{% endfor %}
 					  </one-of>                     
 			  </rule>           
 			</grammar>    
@@ -133,8 +135,12 @@
 	  <filled>   
 	  <!-- This section stores the user's item choice in a global variable to be 
 	  used in the final section-->
-		{{product_conditionals}}
-		
+		{% for index, product_id in product_conditionals %}
+		<if cond="itemtosell=='{{index}}'">
+			<assign name="theitem" expr="'{{product_id}}'" />
+		</if>
+		{% endfor %}
+
 		<goto next="#saleQuantity"/>	
 		
       </filled>  

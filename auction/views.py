@@ -100,19 +100,17 @@ def vxml(request):
     for idx, aProduct in enumerate(products):
         # Generate a list of conditionals to determine which items were selected
         #   by the user
-        product_conditionals.append(
-            '<if cond="itemtosell==\'{}\'"><assign name="product" expr=\"\'{}\'\" /></if>\n'.format(idx,
-                                                                                                    aProduct.product_id))
         # Generate a list of audio_urls for the product
+        product_conditionals.append([idx, aProduct.product_id])
         product_audios.append(aProduct.audio_url)
-        item_indexes.append('<item>{}</item>\n'.format(idx))
+        item_indexes.append(idx)
 
     return render(request=request, template_name=template, context = {'auction_id': current_auction.auction_id,
                                       'quantity_for_sale': quantity_for_sale,
                                       'item_on_schedule': item,
                                       'product_audios': product_audios,
-                                      'product_conditionals': ''.join(product_conditionals),
-                                      'item_indexes': ''.join(item_indexes)}, content_type='text/xml')
+                                      'product_conditionals': product_conditionals,
+                                      'item_indexes': item_indexes}, content_type='text/xml')
 
 
 def add_new_product(request):
