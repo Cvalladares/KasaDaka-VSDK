@@ -16,15 +16,7 @@
 			to buy or sell-->
   <menu id="menu1" dtmf="true">
    <prompt>
-		<audio src="http://django-static.vps.abaart.nl/group10/django/Greeting.wav"/>
-		<audio src="http://django-static.vps.abaart.nl/group10/django/pre_choice_option_en.wav"/>
-		<audio src="http://django-static.vps.abaart.nl/group10/django/Buy_xXdG957.wav"/>
-		<audio src="http://django-static.vps.abaart.nl/group10/django/post_choice_option_en.wav"/>
-		<audio src="http://django-static.vps.abaart.nl/group10/django/1_en.wav"/>
-		<audio src="http://django-static.vps.abaart.nl/group10/django/pre_choice_option_en.wav"/>
-		<audio src="http://django-static.vps.abaart.nl/group10/django/Sell.wav"/>
-		<audio src="http://django-static.vps.abaart.nl/group10/django/post_choice_option_en.wav"/>
-		<audio src="http://django-static.vps.abaart.nl/group10/django/2_en.wav"/>
+		<audio src="http://django-static.vps.abaart.nl/group10/django/Full_Greeting.wav"/>
    </prompt>
    <choice next = "#buyform"/>
    <choice next = "#sellform"/>
