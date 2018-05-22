@@ -118,6 +118,11 @@ def vxml(request):
         product_audios.append([product.product_id, product.audio_url])
         item_indexes.append(product.product_id)
 
+    if not products:
+        product_conditionals.append([0,0])
+        product_audios.append([0, 0])
+        item_indexes.append(0)
+
     if not current_auction is None:
         return render(request=request, template_name=template, context={'auction_id': current_auction.auction_id,
                                                                         'quantity_for_sale': quantity_for_sale,
@@ -127,10 +132,10 @@ def vxml(request):
                                                                         'item_indexes': item_indexes, 'callerid': callerid
                                                                         }, content_type='text/xml')
 
-    return render(request=request, template_name=template, context={    'auction_id': None,
-                                                                        'quantity_for_sale': quantity_for_sale,
-                                                                        'item_on_schedule': item,
-                                                                        'product_audios': None,
+    return render(request=request, template_name=template, context={    'auction_id': 0,
+                                                                        'quantity_for_sale': 0,
+                                                                        'item_on_schedule': 0,
+                                                                        'product_audios': 0,
                                                                         'product_conditionals': product_conditionals,
                                                                         'item_indexes': item_indexes, 'callerid': callerid
                                                                         }, content_type='text/xml')
