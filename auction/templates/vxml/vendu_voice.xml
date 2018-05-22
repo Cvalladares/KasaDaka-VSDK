@@ -27,13 +27,7 @@
 {% if auction %}
 <form id="buyform">
 	<field name="amount" type="digits?minlength=1;maxlength=2">
-		<audio src="http://django-static.vps.abaart.nl/group10/django/YouChoseToBuy.wav"/>
-		<!-- NUMBER-->
-		<audio src="{{ products_left }}"/>
-		<!--Item for sale-->
-		<audio src="{{ auction.product.product_name }}"/>
-		<!--How many jars would you like to buy-->
-		<audio src="http://django-static.vps.abaart.nl/group10/django/HowManyJars.wav"/>
+		<prompt>{{ auction.product.product_name }}</prompt>
 	</field>
 	<block>
 		Thank you for your order.

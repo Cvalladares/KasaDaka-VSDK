@@ -27,13 +27,11 @@ def index(request):
     
     return render(request, template_name, {'products': products, 'auctions': auctions, 'current_auction': current_auction, 'products_left': get_products_left(current_auction)})
 
-
 def product(request):
     model = Product
     template_name = 'product/index.html'
     query_results = Product.objects.all()
     return render(request, template_name, {'query_results': query_results})
-
 
 def bid(request):
     template_name = 'bid/index.html'
@@ -56,7 +54,6 @@ def bid(request):
 
     return render(request, template_name, {'auction': current_auction,
                                            'bids': bids,
-
                                            'current_price': get_current_price(current_auction.auction_start,
                                                                               current_auction.starting_price),
                                            'products_left': get_products_left(current_auction)})
@@ -65,7 +62,6 @@ def bid(request):
 def vxml(request):
     template = 'vxml/vendu.xml'
     callerid = request.GET.get('callerid')
-
     ###################BIDDING LOGIC###############################
 
     # Fetch acutions
@@ -107,8 +103,7 @@ def vxml(request):
     for idx, aProduct in enumerate(products):
         # Generate a list of conditionals to determine which items were selected
         #   by the user
-
-
+        product_conditionals.append('<if cond="itemtosell==\'{}\'"><assign name="product" expr=\"\'{}\'\" /></if>\n'.format(idx, aProduct.product_id))
         # Generate a list of audio_urls for the product
         product_conditionals.append([idx, aProduct.product_id])
         product_audios.append([idx,aProduct.audio_url])
@@ -130,7 +125,6 @@ def vxml(request):
                                                                         'product_conditionals': product_conditionals,
                                                                         'item_indexes': item_indexes, 'callerid': callerid
                                                                         }, content_type='text/xml')
-
 
 def voice(request):
     template_name = 'vxml/vendu_voice.xml'
