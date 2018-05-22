@@ -127,7 +127,6 @@ def add_new_product(request):
 
     return HttpResponseRedirect("/auction/product")
 
-
 def create_new_auction(request):
     create_new_auction_now(request)
 
@@ -211,8 +210,19 @@ def place_bid(request):
     return HttpResponseRedirect("/auction/bid")
 
 def place_voice_bid(request):
+    owner = "Christian"
+    bid = "30"
     my_request = request.POST['quantity']
-    print(my_request)
+
+    new_bid = Bid()
+    new_bid.auction = get_current_auction()
+    new_bid.owner = owner
+    new_bid.bid = bid
+    new_bid.quantity = request.POST['quantity']
+    new_bid.creation_date = timezone.now()
+    new_bid.save()
+
+    print("bid has been saved")
 
 # Helper methods
 def get_current_price(start_time, start_price):
