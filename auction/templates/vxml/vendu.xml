@@ -2,6 +2,7 @@
 <vxml version="2.1">
 	<!-- These are global variables that stores the user's buying choices-->
 	<var name="auction_id" expr = "{{auction_id}}"/>
+	<var name="quantity" expr = "0"/>
 	<!-- This is a global Variable that stores the user's phone info-->
 	<var name="owner" expr="session"/>
 	<!-- This is a global Variable that stores the user's selling options-->
@@ -9,22 +10,14 @@
 
 
 	<!-- Fetch the information from the session and store it in a variable-->
-	<script>
-		owner = session.connection.remote.uri
-	</script>
+	<!--<script>-->
+		<!--owner = session.connection.remote.uri-->
+	<!--</script>-->
 	<!-- This is the initial menu that lets the user decide whether you want
 			to buy or sell-->
   <menu id="menu1" dtmf="true">
    <prompt>
-		<audio src="http://django-static.vps.abaart.nl/group10/django/Greeting.wav"/>
-		<audio src="http://django-static.vps.abaart.nl/group10/django/pre_choice_option_en.wav"/>
-		<audio src="http://django-static.vps.abaart.nl/group10/django/Buy_xXdG957.wav"/>
-		<audio src="http://django-static.vps.abaart.nl/group10/django/post_choice_option_en.wav"/>
-		<audio src="http://django-static.vps.abaart.nl/group10/django/1_en.wav"/>
-		<audio src="http://django-static.vps.abaart.nl/group10/django/pre_choice_option_en.wav"/>
-		<audio src="http://django-static.vps.abaart.nl/group10/django/Sell.wav"/>
-		<audio src="http://django-static.vps.abaart.nl/group10/django/post_choice_option_en.wav"/>
-		<audio src="http://django-static.vps.abaart.nl/group10/django/2_en.wav"/>
+		<audio src="http://django-static.vps.abaart.nl/group10/django/Full_Greeting.wav"/>
    </prompt>
    <choice next = "#buyform"/>
    <choice next = "#sellform"/>
@@ -33,7 +26,7 @@
 	<!-- This is the initial form specifying how many goods are left to buy and prompts
 		  how many goods you want to buy-->
   <form id="buyform">
-	  <field name = "quantity" type="digits?minlength=1;maxlength=2">
+	  <field name = "quantity_in" type="digits?minlength=1;maxlength=2">
 			<!-- This is an open ended grammar to let the user specify how many items to buy
 				  Currently it is limited to up to 9 items and allows 0 as an input-->
 			<prompt>
@@ -57,7 +50,8 @@
 	  </field>
 	  
 	  <!-- Repeat the user choice and transfer the user to the following form (asking for bid)-->
-	  <filled>          
+	  <filled>
+		  <assign name="quantity" expr="quantity_in"/>
         <!-- TODO: Create Feedback "You chose to buy N items" -->
 		<goto next="#makeNewBid"/>
       </filled>  
@@ -90,14 +84,20 @@
 			<!--We will call you to let you know if you have won this bid or
 			if somebody is paying more than you. Goodbye-->
 			<audio src="http://django-static.vps.abaart.nl/group10/django/WeWillCallYouBID.wav"/>
-
-
+			owner is
+			<value expr = "owner"/>
+			quantity is
+			<value expr = "quantity"/>
+			bid is
+			<value expr = "bid"/>
+			auction_id is
+			<value expr="auction_id"/>
 		</prompt>
 		
       </filled>  
 		<!-- TODO: "Submit the BID values entered as a post" -->
 		<block>
-     		 <submit next="" enctype="multipart/form-data" method="post" namelist="owner quantity bid auction_id"/>
+     		 <submit next="https://quiet-lake-72654.herokuapp.com/auction/place_bid" enctype="multipart/form-data" method="post" namelist="quantity bid auction_id"/>
    		</block>
 
   </form>
@@ -112,7 +112,9 @@
 					  <one-of>                      
 						<!-- Grammar will be generated to contain only up to the number of
 							 quieried form the database -->
-						{{item_indexes}}
+						{% for idx in item_indexes %}
+						  <item>{{idx}}</item>
+						{% endfor %}
 					  </one-of>                     
 			  </rule>           
 			</grammar>    
@@ -120,8 +122,14 @@
 			<prompt>
 				<!--You have chosen to sell-->
 				<audio src="http://django-static.vps.abaart.nl/group10/django/YouHaveChosenToSell.wav"/>
-				<!--What are you Trying to sell? Press 1 for shea nuts, press 2 for shea butter, or press 3 for honey-->
-				<audio src="http://django-static.vps.abaart.nl/group10/django/WhatAreYouTryingToSell.wav"/>
+				<!--What are you Trying to sell? -->
+				<audio src="http://django-static.vps.abaart.nl/group10/django/WhatAreYouTryingToSell_kwNG4d0.wav"/>
+				{% for idx, audio_snippet in product_audios %}
+					<audio src="http://django-static.vps.abaart.nl/group10/django/pre_choice_option_en.wav"/>
+					<audio src="{{audio_snippet}}"/>
+					<audio src="http://django-static.vps.abaart.nl/group10/django/post_choice_option_en.wav"/>
+					<audio src="http://django-static.vps.abaart.nl/group10/django/{{idx}}_en.wav"/>
+				{% endfor %}
 
 			</prompt>					
 			
@@ -133,8 +141,11 @@
 	  <filled>   
 	  <!-- This section stores the user's item choice in a global variable to be 
 	  used in the final section-->
-		{{ product_conditionals }}
-		
+		{% for index, product_id in product_conditionals %}
+		<if cond="itemtosell=='{{index}}'">
+			<assign name="product" expr="'{{product_id}}'" />
+		</if>
+		{% endfor %}
 		<goto next="#saleQuantity"/>	
 		
       </filled>  
@@ -142,7 +153,7 @@
   
   <!-- Ask the user the quantity of items to sell-->
   <form id="saleQuantity">
-  		<field name = "quantity" type="digits?minlength=1;maxlength=2">
+  		<field name = "quantity_in" type="digits?minlength=1;maxlength=2">
 
 		<prompt>
 			<!-- How many? -->
@@ -158,6 +169,7 @@
 		</field>
 		
 		<filled>
+			  <assign name="quantity" expr="quantity_in"/>
 			<goto next="#minPrice"/>
 		</filled>
   </form>
@@ -185,7 +197,7 @@
 
 	  	<!--TODO: submit values sto the create auction endpoint-->
 		<block>
-     		 <submit next="" enctype="multipart/form-data" method="post" namelist="owner quantity product starting_price"/>
+     		 <submit next="https://quiet-lake-72654.herokuapp.com/auction/create_new_auction_now" enctype="multipart/form-data" method="post" namelist=" quantity product starting_price"/>
    		</block>
 
   </form>

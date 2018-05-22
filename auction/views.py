@@ -56,6 +56,7 @@ def bid(request):
 
     return render(request, template_name, {'auction': current_auction,
                                            'bids': bids,
+<<<<<<< HEAD
                                            'current_price': get_current_price(current_auction.auction_start, current_auction.starting_price),
                                            'products_left': get_products_left(current_auction)})
 
@@ -63,6 +64,15 @@ def bid(request):
 def vxml(request):
     template = loader.get_template('vxml/default.xml')
     template = 'vxml/default.xml'
+=======
+                                           'current_price': get_current_price(current_auction.auction_start,
+                                                                              current_auction.starting_price),
+                                           'products_left': get_products_left(current_auction)}, content_type='text/xml')
+
+
+def vxml(request):
+    template = 'vxml/vendu.xml'
+>>>>>>> 99b8c1b9326c6a3fc349c1f1cec654141bd62140
 
     ###################BIDDING LOGIC###############################
 
@@ -98,17 +108,26 @@ def vxml(request):
     for idx, aProduct in enumerate(products):
         # Generate a list of conditionals to determine which items were selected
         #   by the user
+<<<<<<< HEAD
         product_conditionals.append('<if cond="itemtosell==\'{}\'"><assign name="product" expr=\"\'{}\'\" /></if>\n'.format(idx, aProduct.product_id))
+=======
+>>>>>>> 99b8c1b9326c6a3fc349c1f1cec654141bd62140
         # Generate a list of audio_urls for the product
-        product_audios.append(aProduct.audio_url)
-        item_indexes.append('<item>{}</item>\n'.format(idx))
+        product_conditionals.append([idx, aProduct.product_id])
+        product_audios.append([idx,aProduct.audio_url])
+        item_indexes.append(idx)
 
-    return render(request, template, {'auction_id': current_auction.auction_id,
+    return render(request=request, template_name=template, context = {'auction_id': current_auction.auction_id,
                                       'quantity_for_sale': quantity_for_sale,
                                       'item_on_schedule': item,
                                       'product_audios': product_audios,
+<<<<<<< HEAD
                                       'product_conditionals': ''.join(product_conditionals),
                                       'item_indexes': ''.join(item_indexes)}, content_type='text/xml')
+=======
+                                      'product_conditionals': product_conditionals,
+                                      'item_indexes': item_indexes}, content_type='text/xml')
+>>>>>>> 99b8c1b9326c6a3fc349c1f1cec654141bd62140
 
 def voice(request):
     template_name = 'vxml/vendu_voice.xml'
