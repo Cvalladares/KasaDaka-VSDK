@@ -22,7 +22,9 @@
 {% if auction %}
 <form id="buyform">
 		<block>
-			We are currently selling {{ auction.product.product_name }}. The seller has {{ products_left }} of the product available.
+			<prompt>
+				We are currently selling {{ auction.product.product_name }}. The seller has {{ products_left }} of the product available.
+			</prompt>
 		</block>
 		<field name="quantity">
 			<prompt>
@@ -30,14 +32,16 @@
 			</prompt>	
 		</field>
 		<block>
-			Thank you, your bid has been placed.
-			<submit next="{% url 'auction:place_voice_bid' %}" method="POST" enctype="multipart/form-data" namelist="quantity"></submit>
+			<prompt>Thank you, your bid has been placed.</prompt>
+			<submit next="{% url 'auction:place_voice_bid' %}" method="POST" namelist="quantity"></submit>
 		</block>
 </form>
 {% else %}
 <form id="buyform">
 	<block>
-		There currently is no auction taking place. You will be disconnected.
+		<prompt>
+			There currently is no auction taking place. You will be disconnected.
+		</prompt>
 	</block>
 </form>
 {% endif %}
