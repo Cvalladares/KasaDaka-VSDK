@@ -21,11 +21,14 @@
 
 {% if auction %}
 <form id="buyform">
-		<block>
-			<prompt>
-				We are currently selling {{ auction.product.product_name }}. The seller has {{ products_left }} of the product available.
-			</prompt>
-		</block>
+	<block>
+		<prompt>
+			We are currently selling {{ auction.product.product_name }}. The seller has {{ products_left }} of the product available.
+		</prompt>
+	</block>
+	<field name="amount" type="digits">
+		<prompt>How much would you like to buy?</prompt>
+	</field>
 </form>
 {% else %}
 <form id="buyform">
