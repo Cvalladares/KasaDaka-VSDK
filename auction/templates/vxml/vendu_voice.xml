@@ -2,8 +2,6 @@
 
 <vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/vxml http://www.w3.org/TR/voicexml20/vxml.xsd">
 
-<var name="owner" expr="{{ caller }}" />
-
 <menu id="menu1" dtmf="true">
 	<prompt>
 		<audio src="http://django-static.vps.abaart.nl/group10/django/Greeting.wav"/>
@@ -28,15 +26,8 @@
 			<prompt>We are currently selling {{ auction.product.product_name }}. The seller has {{ products_left }} of the product available.</prompt>	
 			<audio src="http://django-static.vps.abaart.nl/group10/django/HowManyJars.wav"/>
 
-			<noinput>
-                <reprompt/>
-            </noinput>
-            <nomatch>
-              <reprompt/>
-            </nomatch>
-
             <filled>
-				<submit next="{% url 'auction:place_bid' %}" method="POST" enctype="multipart/form-data" namelist="owner quantity" ></submit>
+				<submit next="{% url 'auction:place_bid' %}" method="POST" enctype="multipart/form-data" namelist="quantity" ></submit>
 			</filled>  
 		</field>
 		
