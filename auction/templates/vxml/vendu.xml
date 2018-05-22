@@ -14,6 +14,7 @@
 	<var name="quantity" expr = "0"/>
 	<!-- This is a global Variable that stores the user's phone info-->
 	<var name="owner" expr="'{{callerid}}'"/>
+	<var narme="phone_number" expr="{{callerid}}"/>
 
 	<!-- This is a global Variable that stores the user's selling options-->
 	<var name="product"/>
@@ -201,7 +202,7 @@
 
 	  	<!--TODO: submit values sto the create auction endpoint-->
 		<block>
-     		 <submit next="https://quiet-lake-72654.herokuapp.com/auction/new_auction" enctype="multipart/form-data" method="post" namelist=" quantity product starting_price"/>
+     		 <submit next="https://quiet-lake-72654.herokuapp.com/auction/new_auction" enctype="multipart/form-data" method="post" namelist=" quantity product starting_price phone_number"/>
    		</block>
 
   </form>
