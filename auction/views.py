@@ -102,7 +102,7 @@ def vxml(request):
         #   by the user
         # Generate a list of audio_urls for the product
         product_conditionals.append([idx, aProduct.product_id])
-        product_audios.append(aProduct.audio_url)
+        product_audios.append([idx,aProduct.audio_url])
         item_indexes.append(idx)
 
     return render(request=request, template_name=template, context = {'auction_id': current_auction.auction_id,

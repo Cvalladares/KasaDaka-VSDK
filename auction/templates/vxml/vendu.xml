@@ -122,8 +122,14 @@
 			<prompt>
 				<!--You have chosen to sell-->
 				<audio src="http://django-static.vps.abaart.nl/group10/django/YouHaveChosenToSell.wav"/>
-				<!--What are you Trying to sell? Press 1 for shea nuts, press 2 for shea butter, or press 3 for honey-->
-				<audio src="http://django-static.vps.abaart.nl/group10/django/WhatAreYouTryingToSell.wav"/>
+				<!--What are you Trying to sell? -->
+				<audio src="http://django-static.vps.abaart.nl/group10/django/WhatAreYouTryingToSell_kwNG4d0.wav"/>
+				{% for idx, audio_snippet in product_audios %}
+					<audio src="http://django-static.vps.abaart.nl/group10/django/pre_choice_option_en.wav"/>
+					<audio src="{{audio_snippet}}"/>
+					<audio src="http://django-static.vps.abaart.nl/group10/django/post_choice_option_en.wav"/>
+					<audio src="http://django-static.vps.abaart.nl/group10/django/{{idx}}_en.wav"/>
+				{% endfor %}
 
 			</prompt>					
 			
@@ -164,7 +170,7 @@
 		</field>
 		
 		<filled>
-					  <assign name="quantity" expr="quantity_in"/>
+			  <assign name="quantity" expr="quantity_in"/>
 			<goto next="#minPrice"/>
 		</filled>
   </form>
@@ -191,9 +197,9 @@
 		</filled>
 
 	  	<!--TODO: submit values sto the create auction endpoint-->
-		<!--<block>-->
-     		 <!--<submit next="" enctype="multipart/form-data" method="post" namelist="owner quantity product starting_price"/>-->
-   		<!--</block>-->
+		<block>
+     		 <submit next="" enctype="multipart/form-data" method="post" namelist=" quantity product starting_price"/>
+   		</block>
 
   </form>
 
