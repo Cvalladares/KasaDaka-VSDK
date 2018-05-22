@@ -2,6 +2,7 @@
 <vxml version="2.1">
 	<!-- These are global variables that stores the user's buying choices-->
 	<var name="auction_id" expr = "{{auction_id}}"/>
+	<var name="quantity" expr = "0"/>
 	<!-- This is a global Variable that stores the user's phone info-->
 	<var name="owner" expr="session"/>
 	<!-- This is a global Variable that stores the user's selling options-->
@@ -25,7 +26,7 @@
 	<!-- This is the initial form specifying how many goods are left to buy and prompts
 		  how many goods you want to buy-->
   <form id="buyform">
-	  <field name = "quantity" type="digits?minlength=1;maxlength=2">
+	  <field name = "quantity_in" type="digits?minlength=1;maxlength=2">
 			<!-- This is an open ended grammar to let the user specify how many items to buy
 				  Currently it is limited to up to 9 items and allows 0 as an input-->
 			<prompt>
@@ -49,7 +50,8 @@
 	  </field>
 	  
 	  <!-- Repeat the user choice and transfer the user to the following form (asking for bid)-->
-	  <filled>          
+	  <filled>
+		  <assign name="quantity" expr="quantity_in"/>
         <!-- TODO: Create Feedback "You chose to buy N items" -->
 		<goto next="#makeNewBid"/>
       </filled>  
