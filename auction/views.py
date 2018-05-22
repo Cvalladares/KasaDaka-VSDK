@@ -119,8 +119,8 @@ def vxml(request):
         item_indexes.append(product.product_id)
 
     if not products:
-        product_conditionals.append([0,0])
-        product_audios.append([0, 0])
+        product_conditionals.append([0, 0])
+        product_audios.append('http://django-static.vps.abaart.nl/group10/django/pre_choice_option_en.wav')
         item_indexes.append(0)
 
     if not current_auction is None:
@@ -135,7 +135,7 @@ def vxml(request):
     return render(request=request, template_name=template, context={    'auction_id': 0,
                                                                         'quantity_for_sale': 0,
                                                                         'item_on_schedule': 0,
-                                                                        'product_audios': 0,
+                                                                        'product_audios': product_audios,
                                                                         'product_conditionals': product_conditionals,
                                                                         'item_indexes': item_indexes, 'callerid': callerid
                                                                         }, content_type='text/xml')
