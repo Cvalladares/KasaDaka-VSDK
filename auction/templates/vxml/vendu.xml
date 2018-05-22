@@ -10,7 +10,10 @@
 
 
 	<!-- These are global variables that stores the user's buying choices-->
+	{% if auction_id %}
 	<var name="auction_id" expr = "{{auction_id}}"/>
+	{% endif %}
+
 	<var name="quantity" expr = "0"/>
 	<!-- This is a global Variable that stores the user's phone info-->
 	<var name="owner" expr="'{{callerid}}'"/>
