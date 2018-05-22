@@ -26,15 +26,6 @@
 				We are currently selling {{ auction.product.product_name }}. The seller has {{ products_left }} of the product available.
 			</prompt>
 		</block>
-		<field name="quantity">
-			<prompt>
-				How many jars would you like?
-			</prompt>	
-		</field>
-		<block>
-			<prompt>Thank you, your bid has been placed.</prompt>
-			<submit next="{% url 'auction:place_voice_bid' %}" method="POST" namelist="quantity"></submit>
-		</block>
 </form>
 {% else %}
 <form id="buyform">
