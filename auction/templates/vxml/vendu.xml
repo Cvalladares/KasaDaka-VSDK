@@ -4,7 +4,8 @@
 	<var name="auction_id" expr = "{{auction_id}}"/>
 	<var name="quantity" expr = "0"/>
 	<!-- This is a global Variable that stores the user's phone info-->
-	<var name="owner" expr="session"/>
+	<var name="owner" expr="'{{callerid}}'"/>
+
 	<!-- This is a global Variable that stores the user's selling options-->
 	<var name="product"/>
 
@@ -97,8 +98,9 @@
       </filled>  
 		<!-- TODO: "Submit the BID values entered as a post" -->
 		<block>
-     		 <!--<submit next="https://quiet-lake-72654.herokuapp.com/auction/place_voice_bid" enctype="multipart/form-data" method="post" namelist="quantity bid auction_id"/>-->
-			 <submit next="https://quiet-lake-72654.herokuapp.com/auction/place_voice_bid" enctype="multipart/form-data" method="post" namelist="quantity"/>
+     		 <submit next="https://quiet-lake-72654.herokuapp.com/auction/place_voice_bid" enctype="multipart/form-data" method="post" namelist="quantity bid auction_id owner"/>
+			 <goto next="#hangupBid"/>
+			<!--<submit next="https://quiet-lake-72654.herokuapp.com/auction/place_voice_bid" enctype="multipart/form-data" method="post" namelist="quantity"/>-->
    		</block>
 
   </form>

@@ -64,7 +64,7 @@ def bid(request):
 
 def vxml(request):
     template = 'vxml/vendu.xml'
-
+    callerid = request.GET.get('callerid')
 
     ###################BIDDING LOGIC###############################
 
@@ -107,12 +107,13 @@ def vxml(request):
         product_audios.append([idx,aProduct.audio_url])
         item_indexes.append(idx)
 
-    return render(request=request, template_name=template, context = {'auction_id': current_auction.auction_id,
-                                      'quantity_for_sale': quantity_for_sale,
-                                      'item_on_schedule': item,
-                                      'product_audios': product_audios,
-                                      'product_conditionals': product_conditionals,
-                                      'item_indexes': item_indexes}, content_type='text/xml')
+    return render(request=request, template_name=template, context={'auction_id': current_auction.auction_id,
+                                                                    'quantity_for_sale': quantity_for_sale,
+                                                                    'item_on_schedule': item,
+                                                                    'product_audios': product_audios,
+                                                                    'product_conditionals': product_conditionals,
+                                                                    'item_indexes': item_indexes, 'callerid': callerid
+                                                                    }, content_type='text/xml')
 
 
 def voice(request):
@@ -215,8 +216,8 @@ def place_bid(request):
     return HttpResponseRedirect("/auction/bid")
 
 def place_voice_bid(request):
-    owner = "Christian"
-    bid = "30"
+    owner = request.POST['owner']
+    bid = request.POST['bid']
     my_request = request.POST['quantity']
 
     new_bid = Bid()
@@ -227,7 +228,7 @@ def place_voice_bid(request):
     new_bid.creation_date = timezone.now()
     new_bid.save()
 
-    print("bid has been saved")
+    return HttpResponseRedirect("/auction/bid")
 
 # Helper methods
 def get_current_price(start_time, start_price):
