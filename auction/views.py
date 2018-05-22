@@ -56,24 +56,12 @@ def bid(request):
 
     return render(request, template_name, {'auction': current_auction,
                                            'bids': bids,
-<<<<<<< HEAD
                                            'current_price': get_current_price(current_auction.auction_start, current_auction.starting_price),
-                                           'products_left': get_products_left(current_auction)})
-
-
-def vxml(request):
-    template = loader.get_template('vxml/default.xml')
-    template = 'vxml/default.xml'
-=======
-                                           'current_price': get_current_price(current_auction.auction_start,
-                                                                              current_auction.starting_price),
                                            'products_left': get_products_left(current_auction)}, content_type='text/xml')
 
 
 def vxml(request):
     template = 'vxml/vendu.xml'
->>>>>>> 99b8c1b9326c6a3fc349c1f1cec654141bd62140
-
     ###################BIDDING LOGIC###############################
 
     # Fetch acutions
