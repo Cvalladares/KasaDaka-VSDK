@@ -21,17 +21,14 @@
 
 {% if auction %}
 <form id="buyform">
-	<block>
 		<field name="quantity" type="digits">
-			<prompt>We are currently selling {{ auction.product.product_name }}. The seller has {{ products_left }} of the product available.</prompt>	
-			<audio src="http://django-static.vps.abaart.nl/group10/django/HowManyJars.wav"/>
+			<prompt>We are currently selling {{ auction.product.product_name }}. The seller has {{ products_left }} of the product available. How many jars would you like?</prompt>	
 
-            <filled>
-				<submit next="{% url 'auction:place_bid' %}" method="POST" enctype="multipart/form-data" namelist="quantity" ></submit>
-			</filled>  
+            <block>
+            	Thank you, your bid has been placed.
+            	<submit next="{% url 'auction:place_voice_bid' %}" method="POST" enctype="multipart/form-data" namelist="quantity" ></submit>
+            </block>
 		</field>
-		
-	</block>
 </form>
 {% else %}
 <form id="buyform">

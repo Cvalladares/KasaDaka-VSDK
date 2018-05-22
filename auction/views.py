@@ -211,13 +211,8 @@ def place_bid(request):
     return HttpResponseRedirect("/auction/bid")
 
 def place_voice_bid(request):
-    new_bid = Bid()
-    new_bid.auction = auction
-    new_bid.owner = "caller"
-    new_bid.bid = request.POST['bid']
-    new_bid.quantity = request.POST['quantity']
-    new_bid.creation_date = timezone.now()
-    new_bid.save()
+    my_request = request.POST['quantity']
+    print(my_request)
 
 # Helper methods
 def get_current_price(start_time, start_price):
