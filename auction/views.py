@@ -113,7 +113,7 @@ def vxml(request):
 def voice(request):
     template_name = 'vxml/vendu_voice.xml'
     caller = request.GET.get('callerid')
-    print(caller)
+    print("Caller: {}".format(caller))
     return render(request, template_name, {}, content_type="text/xml")
 
 def add_new_product(request):

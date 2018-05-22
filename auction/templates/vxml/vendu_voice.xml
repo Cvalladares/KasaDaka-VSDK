@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <vxml version="2.1">
-<prompt><audio src="http://django-static.vps.abaart.nl/group10/django/Greeting.wav"/></prompt>
+	<block>
+		<prompt>
+			Welcome to vendu!
+			<audio src="http://django-static.vps.abaart.nl/group10/django/Greeting.wav"/>
+		</prompt>
+	</block>
+
 </vxml>
