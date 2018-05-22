@@ -37,7 +37,7 @@
 {% else %}
 <form id="buyform">
 	<block>
-		<prompt>There currently is no auction taking place. You will be disconnected. </prompt>		
+		There currently is no auction taking place. You will be disconnected.
 	</block>
 </form>
 {% endif %}
