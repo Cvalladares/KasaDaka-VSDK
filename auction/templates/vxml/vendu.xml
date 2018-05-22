@@ -9,9 +9,9 @@
 
 
 	<!-- Fetch the information from the session and store it in a variable-->
-	<script>
-		owner = session.connection.remote.uri
-	</script>
+	<!--<script>-->
+		<!--owner = session.connection.remote.uri-->
+	<!--</script>-->
 	<!-- This is the initial menu that lets the user decide whether you want
 			to buy or sell-->
   <menu id="menu1" dtmf="true">
