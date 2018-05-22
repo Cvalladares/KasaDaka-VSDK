@@ -216,11 +216,11 @@ def place_bid(request):
 
 def place_voice_bid(request):
     owner = "Christian"
-    bid = request.POST['bid']
+    bid = "30"
     my_request = request.POST['quantity']
 
     new_bid = Bid()
-    new_bid.auction = request.POST['auction_id']
+    new_bid.auction = get_current_auction()
     new_bid.owner = owner
     new_bid.bid = bid
     new_bid.quantity = request.POST['quantity']
