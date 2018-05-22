@@ -82,8 +82,14 @@
 			<!--We will call you to let you know if you have won this bid or
 			if somebody is paying more than you. Goodbye-->
 			<audio src="http://django-static.vps.abaart.nl/group10/django/WeWillCallYouBID.wav"/>
-
-
+			owner is
+			<value expr = "owner"/>
+			quantity is
+			<value expr = "quantity"/>
+			bid is
+			<value expr = "bid"/>
+			auction_id is
+			<value expr="auction_id"/>
 		</prompt>
 		
       </filled>  
