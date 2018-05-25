@@ -31,7 +31,11 @@
 			to buy or sell-->
   <menu id="menu1" dtmf="true">
    <prompt>
+	   	{% if auction_id %}
 		<audio src="http://django-static.vps.abaart.nl/group10/django/Full_Greeting.wav"/>
+	    {% else %}
+	   <audio src="http://django-static.vps.abaart.nl/group10/django/no_sale_greeting.wav"/>
+		{% endif %}
    </prompt>
 	{% if auction_id %}
   		 <choice next = "#buyform"/>
@@ -74,7 +78,7 @@
       </filled>  
   </form>
 
-	<!-- Request the User to input how much to pay for the ammount of goods selected -->
+	<!-- Request the User to input how much to pay for the amount of goods selected -->
     <form id="makeNewBid">
 		<!-- This grammar is limited from 0 to 9 -->
 	  <field name = "bid" type="digits?minlength=1;maxlength=2">
