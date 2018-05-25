@@ -84,9 +84,9 @@ def vxml(request):
         # Audio should state htere are not items for sale
         product_audio_url = item_for_sale = quantity_for_sale
 
-        product_audios = list.append([0, product_audio_url])
+        product_audios = list().append([0, product_audio_url])
         product_conditionals = list().append([0,0])
-        item_indexes = list.append(0)
+        item_indexes = list().append(0)
 
         return render(request=request, template_name=template, context={'auction_id': 0,
                                                                         'quantity_for_sale': quantity_for_sale,
