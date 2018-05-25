@@ -17,7 +17,7 @@
 	<var name="quantity" expr = "0"/>
 	<!-- This is a global Variable that stores the user's phone info-->
 	<var name="owner" expr="'{{callerid}}'"/>
-	<var narme="phone_number" expr="{{callerid}}"/>
+	<var name="phone_number" expr="'{{callerid}}'"/>
 
 	<!-- This is a global Variable that stores the user's selling options-->
 	<var name="product"/>
