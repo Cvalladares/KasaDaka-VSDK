@@ -106,9 +106,8 @@
       </filled>  
 		<!-- TODO: "Submit the BID values entered as a post" -->
 		<block>
-     		 <submit next="https://quiet-lake-72654.herokuapp.com/auction/place_voice_bid" enctype="multipart/form-data" method="post" namelist="quantity bid auction_id owner"/>
+     		 <submit next="{% url 'auction:place_voice_bid' %}" enctype="multipart/form-data" method="post" namelist="quantity bid auction_id owner"/>
 			 <goto next="#hangupBid"/>
-			<!--<submit next="https://quiet-lake-72654.herokuapp.com/auction/place_voice_bid" enctype="multipart/form-data" method="post" namelist="quantity"/>-->
    		</block>
 
   </form>
@@ -208,7 +207,7 @@
 
 	  	<!--TODO: submit values sto the create auction endpoint-->
 		<block>
-     		 <submit next="https://quiet-lake-72654.herokuapp.com/auction/new_auction" enctype="multipart/form-data" method="post" namelist=" quantity product starting_price phone_number"/>
+     		 <submit next="{% url 'auction:create_new_auction' %}" enctype="multipart/form-data" method="post" namelist=" quantity product starting_price phone_number"/>
    		</block>
 
   </form>
