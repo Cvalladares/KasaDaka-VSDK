@@ -69,10 +69,33 @@ def vxml(request):
     end_range = start_range + datetime.timedelta(days=6)
     auctions = Auction.objects.filter(auction_end__range=[start_range, end_range])
 
+
     current_auction = None
     for auction in auctions:
         if auction.auction_start.replace() <= datetime.datetime.now() <= auction.auction_end:
             current_auction = auction
+
+    # If there are no auctions scheduled at the moment, generate generic values
+    if current_auction is None:
+        # state there are no items for sale
+        quantity_for_sale = 'http://django-static.vps.abaart.nl/group10/django/{}' \
+            .format('no_sale.wav')
+
+        # Audio should state htere are not items for sale
+        product_audio_url = item_for_sale = quantity_for_sale
+
+        product_audios = list.append([0, product_audio_url])
+        product_conditionals = list().append([0,0])
+        item_indexes = list.append(0)
+
+        return render(request=request, template_name=template, context={'auction_id': 0,
+                                                                        'quantity_for_sale': quantity_for_sale,
+                                                                        'item_on_schedule': item_for_sale,
+                                                                        'product_audios': product_audios,
+                                                                        'product_conditionals': product_conditionals,
+                                                                        'item_indexes': item_indexes,
+                                                                        'callerid': callerid
+                                                                        }, content_type='text/xml')
 
     # Generate the URL for the Wav file.  All wave files must be named as <number>_en.wav in
     #   order for this to work
@@ -82,7 +105,8 @@ def vxml(request):
                                         '_en.wav')
 
     if quantity_for_sale is None:
-        quantity_for_sale=0
+        quantity_for_sale = 'http://django-static.vps.abaart.nl/group10/django/{}' \
+            .format('0_en.wav')
 
     item = 0
     auction_id = 0
@@ -118,23 +142,14 @@ def vxml(request):
         product_audios.append([product.product_id, product.audio_url])
         item_indexes.append(product.product_id)
 
+    return render(request=request, template_name=template, context={'auction_id': current_auction.auction_id,
+                                                                    'quantity_for_sale': quantity_for_sale,
+                                                                    'item_on_schedule': item,
+                                                                    'product_audios': product_audios,
+                                                                    'product_conditionals': product_conditionals,
+                                                                    'item_indexes': item_indexes, 'callerid': callerid
+                                                                    }, content_type='text/xml')
 
-    if not current_auction is None:
-        return render(request=request, template_name=template, context={'auction_id': current_auction.auction_id,
-                                                                        'quantity_for_sale': quantity_for_sale,
-                                                                        'item_on_schedule': item,
-                                                                        'product_audios': product_audios,
-                                                                        'product_conditionals': product_conditionals,
-                                                                        'item_indexes': item_indexes, 'callerid': callerid
-                                                                        }, content_type='text/xml')
-
-    return render(request=request, template_name=template, context={    'auction_id': 0,
-                                                                        'quantity_for_sale': 0,
-                                                                        'item_on_schedule': '',
-                                                                        'product_audios': [''],
-                                                                        'product_conditionals': [0,0],
-                                                                        'item_indexes': item_indexes, 'callerid': callerid
-                                                                        }, content_type='text/xml')
 
 def voice(request):
     template_name = 'vxml/vendu_voice.xml'
