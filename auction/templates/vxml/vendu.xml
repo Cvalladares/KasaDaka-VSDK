@@ -20,29 +20,15 @@
 	<var name="phone_number" expr="'{{callerid}}'"/>
 
 	<!-- This is a global Variable that stores the user's selling options-->
-	<var name="product"/>
+	<var name="product" expr="1"/>
 
 	<!-- This is the initial menu that lets the user decide whether you want
 			to buy or sell-->
-  <!--<menu id="menu1" dtmf="true">-->
-   <!--<prompt>-->
-	   	<!--{% if auction_id %}-->
-		<!--<audio src="http://django-static.vps.abaart.nl/group10/django/Full_Greeting.wav"/>-->
-	    <!--{% else %}-->
-	   <!--<audio src="http://django-static.vps.abaart.nl/group10/django/no_sale_greeting.wav"/>-->
-		<!--{% endif %}-->
-   <!--</prompt>-->
-	<!--{% if auction_id %}-->
-  		 <!--<choice next = "#buyform"/>-->
-  	<!--{% endif %}-->
-   <!--<choice next = "#sellform"/>-->
-  <!--</menu>-->
-
   <form id="introform">
 	  <!-- Dynamic grammar that handles the situation where there are no auctions and when there are-->
 	  <field name = "intromenu">
-			<grammar xml:lang="en-US" root = "openDigitInput" mode="dtmf">
-			  <rule id="openDigitInput" scope="public" >
+			<grammar xml:lang="en-US" root = "openDigitInput1" mode="dtmf">
+			  <rule id="openDigitInput1" scope="public" >
 					  <one-of>
 						{% if auction_id %}
 						  <item>1</item>
@@ -166,8 +152,8 @@
 		<!-- This grammar uses dtmf and has 3 different choices only-->	
 		  <field name = "itemtosell">
 			<!-- TODO: Make dynamic database query for the items -->
-			<grammar xml:lang="en-US" root = "openDigitInput" mode="dtmf">
-			  <rule id="openDigitInput" scope="public" >
+			<grammar xml:lang="en-US" root = "openDigitInput2" mode="dtmf">
+			  <rule id="openDigitInput2" scope="public" >
 					  <one-of>                      
 						<!-- Grammar will be generated to contain only up to the number of
 							 quieried form the database -->
