@@ -22,27 +22,72 @@
 	<!-- This is a global Variable that stores the user's selling options-->
 	<var name="product"/>
 
-
-	<!-- Fetch the information from the session and store it in a variable-->
-	<!--<script>-->
-		<!--owner = session.connection.remote.uri-->
-	<!--</script>-->
 	<!-- This is the initial menu that lets the user decide whether you want
 			to buy or sell-->
-  <menu id="menu1" dtmf="true">
-   <prompt>
-	   	{% if auction_id %}
-		<audio src="http://django-static.vps.abaart.nl/group10/django/Full_Greeting.wav"/>
-	    {% else %}
-	   <audio src="http://django-static.vps.abaart.nl/group10/django/no_sale_greeting.wav"/>
-		{% endif %}
-   </prompt>
-	{% if auction_id %}
-  		 <choice next = "#buyform"/>
-  	{% endif %}
-   <choice next = "#sellform"/>
-  </menu>
- 
+  <!--<menu id="menu1" dtmf="true">-->
+   <!--<prompt>-->
+	   	<!--{% if auction_id %}-->
+		<!--<audio src="http://django-static.vps.abaart.nl/group10/django/Full_Greeting.wav"/>-->
+	    <!--{% else %}-->
+	   <!--<audio src="http://django-static.vps.abaart.nl/group10/django/no_sale_greeting.wav"/>-->
+		<!--{% endif %}-->
+   <!--</prompt>-->
+	<!--{% if auction_id %}-->
+  		 <!--<choice next = "#buyform"/>-->
+  	<!--{% endif %}-->
+   <!--<choice next = "#sellform"/>-->
+  <!--</menu>-->
+
+  <form id="buyform">
+	  <!-- Dynamic grammar that handles the situation where there are no auctions and when there are-->
+	  <field name = "intromenu">
+			<grammar xml:lang="en-US" root = "openDigitInput" mode="dtmf">
+			  <rule id="openDigitInput" scope="public" >
+					  <one-of>
+						{% if auction_id %}
+						  <item>1</item>
+						  <item>2</item>
+						{% else %}
+						  <item>1</item>
+						{% endif %}
+					  </one-of>
+			  </rule>
+			</grammar>
+
+
+			 <prompt>
+				{% if auction_id %}
+				<audio src="http://django-static.vps.abaart.nl/group10/django/Full_Greeting.wav"/>
+				{% else %}
+			   <audio src="http://django-static.vps.abaart.nl/group10/django/no_sale_greeting.wav"/>
+				{% endif %}
+		   </prompt>
+
+		   <noinput>
+				<reprompt/>
+			</noinput>
+			<nomatch>
+			  <reprompt/>
+			</nomatch>
+	  </field>
+	  <filled>
+				{% if auction_id %}
+					<if cond = "intromenu == 1">
+							<goto next="#buyform"/>
+					</if>
+					<if cond = "intromenu == 2">
+							<goto next="#sellform"/>
+					</if>
+				{% else %}
+			   		<if cond = "intromenu==1">
+							<goto next="#sellform"/>
+					</if>
+				{% endif %}
+
+      </filled>
+
+
+  </form>
 	<!-- This is the initial form specifying how many goods are left to buy and prompts
 		  how many goods you want to buy-->
   <form id="buyform">
