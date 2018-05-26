@@ -38,7 +38,7 @@
    <!--<choice next = "#sellform"/>-->
   <!--</menu>-->
 
-  <form id="buyform">
+  <form id="introform">
 	  <!-- Dynamic grammar that handles the situation where there are no auctions and when there are-->
 	  <field name = "intromenu">
 			<grammar xml:lang="en-US" root = "openDigitInput" mode="dtmf">
